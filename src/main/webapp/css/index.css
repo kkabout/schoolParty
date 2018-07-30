@@ -1,0 +1,136 @@
+.zhuye{
+	margin: 0 auto;
+	
+}
+
+.title_count{
+	width: 1200px;
+   	padding-top: 0px;
+    margin:0px auto;
+    white-space: nowrap;
+    overflow: hidden; 
+}
+.title_count ul{
+	float: right;
+}
+.count1{
+	width: 1200px;
+    margin:0px auto;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 40px;
+    line-height: 40px;
+	background-color: lightyellow;
+	opacity: 0.8;
+}
+	#t1 {
+		font-size: 20px;
+		animation: mysecond linear 6s infinite alternate;
+		-webkit-animation: mysecond linear 6s infinite alternate;
+	}
+	
+	@keyframes mysecond {
+		0% {
+			color: red;
+		}
+		14% {
+			color: black;
+		}
+		28% {
+			color: yellow;
+		}
+		42% {
+			color: darkgoldenrod; 
+		}
+		60% {
+			color: gray;
+		}
+		80% {
+			color: blue;
+		}
+		100% {
+			color: green;
+		}
+	}
+#list1{
+	width: 1200px;
+    margin-top: 15px;
+    margin:0 auto;
+  
+    white-space: nowrap;
+    overflow: hidden;
+    height: 50px;
+    line-height: 50px;
+	background-color: ghostwhite;
+	opacity: 0.8;
+	
+}
+#list1 ul{
+	float: left;
+}
+#list1 ul li{
+	float: left;
+	list-style: none;
+	margin-left: 50px;
+}
+
+.item1 {
+	float: left;
+
+	margin: 10px 45px;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+}
+
+.item1:hover {
+
+	transform: rotate(45deg) scale(0.8) ;
+	-moz-transform: scale(0.8);
+	-o-transform: scale(0.8);
+}
+.item2 {
+	float: left;
+	
+	margin: 10px 45px;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+}
+
+.item2:hover {
+
+	transform: rotate(-45deg) scale(0.8) ;
+	-moz-transform: scale(0.8);
+	-o-transform: scale(0.8);
+}
+
+.Content{
+	width: 1200px;
+    margin-top: 0px;
+    margin:0 auto;
+    white-space: nowrap;
+    overflow: hidden;
+  
+}
+
+.Content1{
+	width: 1200px;
+	height: 250px;
+   
+    
+    white-space: nowrap;
+    overflow: hidden;
+	
+}
+.Content1 .Content2{
+	float: left;
+	width: 290px;
+	height: 180px;
+	background-color:lightyellow;
+	margin-right: 10px;
+}
+.Content1 .content_title{
+	margin-top: 10px;
+	background-color:lightyellow;
+}

@@ -1,0 +1,108 @@
+body{
+		background-color: rgb(236, 236, 236);
+		min-width: 1200px;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+.w{
+	width: 1200px;
+	margin: 0 auto;
+	
+}
+.logo{
+	width: 180px;
+	height: 55px;
+	margin: 4px 10px;
+	float: left;
+
+}
+.logo a{
+	display: block;
+	width: 180px;
+	height: 55px;
+	background: url('../image/logonav2.png') no-repeat center;
+	text-indent: -10em;
+	overflow: hidden;
+
+}
+.header{
+	/* border-bottom: 1px solid #EE9A00; */
+	box-shadow: 0 13px 20px rgba(238, 154, 0, 0.1);
+	background-color: #fff;
+	width: 100%;
+	height: 65px;
+	border-radius: 15px;
+	
+
+}
+.headerbutton{
+	width: 300px;
+	height: 65px;
+	line-height: 65px;
+	float: left;
+}
+
+.headerbutton ul li{
+	margin-right: 5px;
+}
+.headerbutton ul li a{
+	font-size: 17px;
+	display: block;
+	width: 70px;
+	height: 38px;
+	border: 1px solid #EEC591;
+	text-align: center;
+	line-height: 38px;
+	border-radius: 7px;
+	color: #DEB887;
+	text-decoration: none;
+
+}
+.headerbutton a:hover{
+	color: #fff;
+	background-color:#EEC591 ;
+	transition: all .2s ease-in-out;
+}
+.nab{
+	width: 900px;
+	float: left;
+}
+.nab ul{
+	overflow: hidden;
+}
+
+.nab ul li{
+
+	position: relative;
+  	display: block;
+  	float: left
+} 
+.nab li a{
+	padding: 0 20px;
+	height: 65px;
+	width: 148px;
+	color:#CD853F;
+	font-size: 17px;
+	position: relative;
+  	display: block; 
+  	text-align: center;
+  	line-height: 65px;
+  	text-decoration: none;
+
+}
+.nab li a:hover{
+	color: #CD853F;
+	background-color: rgba(205, 102, 29, 0.2);
+	border-bottom: 3px solid #EE9A00;
+	transition: all .2s ease-in-out;
+	
+} 
+.nab li.nabactive a{
+	
+	background-color: rgba(238, 197, 145, 0.2);
+	border-bottom: 3px solid #EE9A00;
+	
+
+}

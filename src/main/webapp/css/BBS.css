@@ -1,0 +1,297 @@
+body{
+	min-width: 1200px;
+	background-color: rgba(236,236,236, 1.0);
+	font-family:"microsoft yahei", 宋体, "segoe ui", "lucida grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+.w{
+	width: 1200px;
+	margin: 0 auto;
+}
+.BBS-head{
+	width: 100%;
+	height: 220px;
+	border: 3px solid #FFF;
+	border-radius: 10px;
+
+}
+.BBS-nav{
+	width: 100%;
+	height: 30px;
+	margin-top: 20px;
+}
+.BBS-nav a{
+	line-height: 30px;
+	font-size: 15px;
+	text-decoration: none;
+	color: #DEB887;
+}
+.spacer{
+	color: #DEB887;
+}
+.BBS-post{
+	width: 100%;
+	height: 50px;
+	border-radius: 10px;
+	background-color: #FFF;
+	box-shadow: 0 10px 15px #e7e8e9;
+}
+.BBS-post a{
+	text-decoration: none;
+}
+.post-report{
+	width: 100px;
+	padding: 5px 5px;
+	float: left;
+}
+.post-report a{
+
+	display: block;
+	height: 38px;
+	line-height: 38px;
+	font-size: 20px;
+	text-align: center;
+	background-color: #EEC591;
+	color: #FFF;
+	border-radius: 10px;
+	box-shadow: inset 5px -11px 10px #DEB887;
+	text-decoration: none;
+}
+.post-paging{
+	/* width: 1100px; */
+	float: right;
+	padding: 5px 5px;
+	margin-top: 5px;
+}
+.post-paging a{
+	display: block;
+
+}
+.post-paging strong{
+	border-radius: 50%;
+}
+.post-paging a:hover{
+	border-radius: 12px;
+	transition: all 0.3s ease-in-out;
+	margin-top: 3px;
+
+}
+
+.page-back{
+	float: right;
+	padding: 5px 5px;
+	margin-top: 5px;
+}
+.post-paging a,.post-paging strong,.post-paging label,.page-back a{
+	float: left;
+	margin-left: 5px;
+	padding: 0 12px;
+	height: 32px;
+	line-height: 32px;
+	background-color: #DEB887;
+	font-size: 16px;
+	color: #fff;
+}
+.post-paging a,.post-paging label,.page-back a{
+	border-radius: 6px;
+}
+.BBS-main{
+	margin-top: 20px;
+	box-shadow: 0 0 15px rgba(128, 128, 128, 0.3);
+	font-family: Tahoma,microsoft yahei,simsun;
+	
+}
+.th{
+	width: 1200px;
+	height: 60px;
+	line-height: 60px;
+	background-color: rgba(238, 197, 145, .4);
+	display: block;
+	
+	
+}
+.th a{
+	text-decoration: none;
+	font-size: 18px;
+	margin-left: 10px;
+	color:#CD853F;  
+}
+.tm{
+	width: 1200px;
+	background-color: #fff;
+	display: block;
+	overflow: hidden;
+}
+.tm tbody{
+	border-bottom: 1px solid #C4C4C4;
+}
+.tctitle{
+	margin-top: 10px;
+
+}
+.tctitle em{
+	font-style: normal;
+	color: #009999;
+}
+.tctitle em a{
+	font-size: 14px;
+	color: #009999;
+
+}
+.tctitle a:hover{
+	color: #CD853F;
+}
+.tctitle a{
+	text-decoration: none;
+	font-size: 17px;
+	color: #4D4D4D;
+}
+.tctitle span{
+	margin-left: 10px;
+}
+.tctitle span a{
+	font-size: 14px;
+}
+.tctitle span a:hover{
+	color: #FF6666;
+}
+.tcommon{
+	overflow: hidden;
+	height: 60px;
+	width: 1000px;
+	margin-left: 10px;
+	float: left;
+}
+.at{
+	float: left;
+	color: #A9A9A9;
+	font-size: 14px;
+	
+}
+.lastrp{
+	float: left;
+	color: #A9A9A9;
+	font-size: 14px;
+	
+}
+.tcommon span.spacer{
+	float: left;
+	margin: 0 10px;
+}
+
+.at a,.lastrp a{
+	margin-right: 10px;
+	text-decoration: none;
+	color: #636363;
+}
+.at a:hover,.lastrp a:hover{
+	color: #FF6666;
+}
+.checknum{
+	float: right;
+	padding: 10px 25px;
+	font-size: 15px;
+	width: 190px;
+}
+#rech{
+	padding-left: 8px;
+}
+.checknum div{
+	padding-left: 0;
+}
+.checknum a{
+	text-decoration: none;
+	color: #000;
+}
+.checknum a:hover{
+	color: #FF6666;
+}
+.nextpage{
+	width: 100%;
+	
+	text-align: center;
+	font-size: 18px;
+	margin-top: 20px;
+
+}
+.nextpage a{
+	height: 40px;
+	line-height: 40px;
+	display: block;
+	text-decoration: none;
+	background-color: #FFF;
+	border-radius: 3px;
+	color: #a9a9a9;
+}
+.fastpost{
+	width: 1200px;
+	height: 400px;
+	background-color: #fff;
+
+}
+.fastpost h2{
+	padding: 17px 25px;
+	font-size: 25px;
+}
+.parea{
+	padding: 20px;
+}
+
+.themesel{
+	float: left;
+	margin: 0 10px;
+}
+.themesel select{
+	outline: none;
+	width: 100px;
+	height: 30px;
+	font-size: 16px;
+}
+.fph{
+	margin: 0 20px; 
+}
+.fph input[type="text"]{
+	height: 30px;
+	outline: none;
+	width: 500px;
+	font-size: 16px;
+}
+.fph input[type="text"]:focus{
+	border: 1px solid #EEA2AD;
+}
+.fpm-type{
+	width: 1100px;
+	height: 50px;
+	background-color: #EBEBEB;
+	border: 1px solid #AAAAAA;
+	border-bottom: none;
+}
+.fpm{	
+	margin-top: 10px;
+}
+
+.fpm-type,.fpm-tarea{
+	margin: 0 auto;
+	text-align: center;
+}
+
+.fpm-tarea textarea{
+	border-color: #AAAAAA;
+	border-top: none;
+	width: 1100px;
+	height: 200px;
+	outline:none;
+	resize:none;
+}
+.admode{
+	line-height: 50px;
+	float: right;
+	padding-right: 10px;
+}
+.admode span{
+	font-size: 17px;
+
+}

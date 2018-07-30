@@ -1,0 +1,171 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: MicrosoftYaHei;
+}
+
+.main
+{
+    width: 100%;
+    border: 0px  dashed #ccc;
+    margin: 0 auto;
+}
+
+.title-line {
+    width: 960px;
+    height: 28px;
+    margin: 0 auto;
+
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 28px;
+    text-align: center;
+}
+.tit {
+    height: 56px;line-height: 56px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background: #fff;
+    text-align: center;
+}
+
+
+.user_id_pwd {
+
+    width:439px;
+    padding:10px;
+
+}
+.line {
+    height: 44px ;
+    line-height: 44px;
+    width:439px;
+    margin: 0 auto;
+    position: relative;
+}
+.margin_top_28 {
+    margin-top: 28px;
+}
+.margin_bottom_40 {
+    margin-bottom:  40px;
+}
+
+.codeImg,
+.user_id_pwd,
+.codeText {
+    height: 40px ;
+}
+
+.codeText {
+    width:280px ;
+
+    /*float:left;	*/
+    padding: 10px;
+}
+.codeImg {
+    width:100px ;
+
+    /*float:right ; */
+    color: #666;
+    background-color: #f7f7f7;
+}
+
+.float_left {
+    float:left;
+}
+.float_right {
+    float:right;
+}
+
+a {
+    text-decoration: none;
+
+}
+.text_align_right {
+    text-align:  right;
+}
+.text_align_left {
+    text-align: left;
+}
+
+.submit_btn {
+    width: 439px;
+    height: 40px;
+    margin: 0 auto;
+    color: #666;
+    /*background-color: //#f7f7f7;*/
+    background-color :#39afe6;
+    font-size: large;
+}
+/* 圆角边框 */
+.user_id_pwd,
+.codeText,
+.codeImg,
+.submit_btn
+{
+    -webkit-border-radius: 1px;
+    border: 1px solid #dfdfdf;
+    -moz-border-radius : 1px;
+}
+
+.error_message {
+    color: #f45d90;
+    font-size: 12px;
+    position: absolute;
+    left: 450px;
+    top: 25%;
+    line-height: 16px;
+    width: 270px;
+}
+.lable_m {
+    width:60px;
+    height: 40px;
+    font-size: 15px;
+    position: absolute;
+    right: 460px;
+    text-align: right;
+
+}
+.safe_line {
+    width: 30px;
+    height: 5px;
+    border-radius: 5px;
+    margin-left: 15px;
+    margin-top: 7px;
+    background-color: #f45d90;
+}
+
+.degree_r,
+.degree_o,
+.degree_y,
+.degree_g
+{
+    float:left;
+    margin-left: 10px;
+    width: 65px;
+    height: 10px;
+    margin-top: 15px;
+    display: inline-block;
+}
+.degree_r{
+    background-color: red;
+}
+.degree_o{
+    background-color: orange;
+}
+.degree_y{
+    background-color: yellow;
+}
+.degree_g{
+    background-color: green;
+}
+
+/* 圆角边框 */
+.degree_r,
+.degree_o,
+.degree_y,
+.degree_g
+{
+    -webkit-border-radius: 5px;
+    border: 1px solid #dfdfdf;
+    -moz-border-radius : 5px;
+}
