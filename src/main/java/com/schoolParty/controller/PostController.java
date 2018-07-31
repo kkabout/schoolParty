@@ -21,15 +21,16 @@ public class PostController {
     @Resource
     private IUserService userService;
     @RequestMapping(value = "insertPost.go",method = RequestMethod.POST)
-    public String insertPost(post Post)
+    public String insertPost(post Post,String idplate,String userid)
     {
+
         Date date = new Date();
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Post.setPublishTime(f.format(date));
-        Post.setSectionId(1);
-        Post.setUserId(1);
+        Post.setSectionId(Integer.parseInt(idplate));
+        Post.setUserId(Integer.parseInt(userid));
         this.postService.insertPost(Post);
-        return "index";
+        return "redirect:/post/selectAllPost.go";
 
     }
     @RequestMapping(value = "selectAllPost.go",method = {RequestMethod.POST,RequestMethod.GET})
@@ -37,6 +38,7 @@ public class PostController {
     {
 
         List<post> posts = this.postService.selectAllPost(idplate);
+        model.addAttribute("idplate",idplate);
         model.addAttribute("posts",posts);
         return "BBS";
 

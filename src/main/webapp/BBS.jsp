@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<jsp:include page="head.jsp"></jsp:include>
 <head>
 	<meta charset="UTF-8">
 	<title>校园Party</title>
@@ -123,51 +124,64 @@
 					<a href="#">下一页</a>
 				</div>
 			</div>
-			<div class="fastpost">
-				<h2>快速发帖</h2>
-				<div class="parea">
-					<form action="/post/insertPost.go">
-						<div class="fph">
-							<div class="themesel">
-								<select>
-									<option value="1">口嗨</option>
-									<option value="2">找人</option>
-									<option value="3">diss</option>
-									<option value="4">交易</option>
-								</select>
+
+			<c:if test="${!empty user}">
+				<div class="fastpost">
+					<h2>快速发帖</h2>
+					<div class="parea">
+						<form action="/post/insertPost.go" method="post">
+							<input type="hidden" name="userid" value="${user.uid}" />
+							<input type="hidden" name="idplate" value="${idplate}" />
+							<div class="fph">
+								<div class="themesel">
+									<select name="type">
+										<option value="口嗨">口嗨</option>
+										<option value="找人">找人</option>
+										<option value="diss">diss</option>
+										<option value="交易">交易</option>
+									</select>
+
+
+								</div>
+
+								<input type="text" name="title" id="title">
+								<span></span>
 							</div>
-							<input type="text" name="title" id="title">
-							<span></span>
-						</div>
-						<div class="fpm">
-							<div class="fpm-type">
+							<div class="fpm">
+								<div class="fpm-type">
 								<span class="admode">
 									<a href="#">高级模式</a>
 								</span>
+								</div>
+								<div class="fpm-tarea">
+									<textarea name="content" id="content"></textarea>
+								</div>
+								<!-- <script type="text/javascript" src="js/ckeditor5-build-classic/ckeditor.js"></script>
+                                <script>
+                                    var myEditor = null;
+                                    window.onload = function(){
+                                         ClassicEditor
+                                        .create(document.querySelector("#editor"))
+                                        .then(editor => {
+                                            myEditor = editor;
+                                        })
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                    }
+                                </script> -->
 							</div>
-							<div class="fpm-tarea">
-								<textarea name="content" id="content"></textarea>
+							<div class="line">
+								<input class="submit_btn" type="submit" value="发帖" >
 							</div>
-							<!-- <script type="text/javascript" src="js/ckeditor5-build-classic/ckeditor.js"></script>
-							<script>
-								var myEditor = null;
-								window.onload = function(){
-								     ClassicEditor
-								    .create(document.querySelector("#editor"))
-								    .then(editor => {
-								        myEditor = editor;
-								    })
-								    .catch(error => {
-								        console.error(error);
-								    });
-								}
-							</script> -->
-						</div>
-					</form>
+						</form>
+					</div>
 				</div>
-			</div>
+			</c:if>
+
+
 		</div>
 	</div>
-
+	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
