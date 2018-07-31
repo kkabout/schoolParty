@@ -18,6 +18,7 @@ public class IndexController {
     }
 
     //页面跳转
+    //这是一个测试看你能不能收到
     @RequestMapping("/BBS")
     public String BBS(){
         return "BBS";
