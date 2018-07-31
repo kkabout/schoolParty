@@ -17,6 +17,7 @@ public class IndexController {
         request.getRequestDispatcher(request.getContextPath()+"/plate/select").forward(request,response);
     }
 
+    //页面跳转
     @RequestMapping("/BBS")
     public String BBS(){
         return "BBS";
