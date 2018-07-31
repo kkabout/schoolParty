@@ -10,4 +10,6 @@ import java.util.Map;
  */
 public interface PlateDao {
     public List<plate> selectAll();
+
+    plate selectOne(String idplate);
 }

@@ -26,11 +26,10 @@
 				<div class="BBS-nav">
 					<a href="#" title="主页"><i class="fa fa-coffee"></i></a>
 					<span class="spacer">></span>
-					<a href="#" title="论坛">论坛</a>
+					<a href="#" title="论坛">校园Party</a>
 					<span class="spacer">></span>
-					<a href="#" title="板块名">板块名</a>
-					<span class="spacer">></span>
-					<a href="#" title="板块名">板块名</a>
+					<a href="#" title="板块名">${plate.pname}</a>
+
 				</div>
 				<div class="BBS-post">
 					<div class="post-report">

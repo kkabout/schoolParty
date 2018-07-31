@@ -10,4 +10,5 @@ import java.util.Map;
  */
 public interface PlateService {
     public List<plate> selectAll();
+    public plate selectOne(String idplate);
 }

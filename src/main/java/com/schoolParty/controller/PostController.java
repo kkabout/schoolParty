@@ -1,8 +1,10 @@
 package com.schoolParty.controller;
 
+import com.schoolParty.model.plate;
 import com.schoolParty.model.post;
 import com.schoolParty.service.IPostService;
 import com.schoolParty.service.IUserService;
+import com.schoolParty.service.PlateService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,8 @@ public class PostController {
     private IPostService postService;
     @Resource
     private IUserService userService;
+    @Resource
+    private PlateService plateService;
     @RequestMapping(value = "insertPost.go",method = RequestMethod.POST)
     public String insertPost(post Post,String idplate,String userid)
     {
@@ -38,7 +42,8 @@ public class PostController {
     {
 
         List<post> posts = this.postService.selectAllPost(idplate);
-        model.addAttribute("idplate",idplate);
+        plate Plate = this.plateService.selectOne(idplate);
+        model.addAttribute("plate",Plate);
         model.addAttribute("posts",posts);
         return "BBS";
 
