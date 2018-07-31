@@ -30,7 +30,7 @@ public class PostController {
         Post.setSectionId(Integer.parseInt(idplate));
         Post.setUserId(Integer.parseInt(userid));
         this.postService.insertPost(Post);
-        return "redirect:/post/selectAllPost.go";
+        return "redirect:/post/selectAllPost.go？idplate="+idplate;
 
     }
     @RequestMapping(value = "selectAllPost.go",method = {RequestMethod.POST,RequestMethod.GET})

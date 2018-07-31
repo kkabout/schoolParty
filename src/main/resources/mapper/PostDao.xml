@@ -6,8 +6,8 @@
 
     <select id="insertPost">
          insert into post(
-		idpost,content,modifyTime,publishTime,title,sectionId,userId) values(
-		#{idpost},#{content},#{modifyTime},#{publishTime},#{title},#{sectionId},#{userId}
+		idpost,content,modifyTime,publishTime,title,sectionId,userId,type) values(
+		#{idpost},#{content},#{modifyTime},#{publishTime},#{title},#{sectionId},#{userId},#{type}
 		);
     </select>
     <select id="selectAllPost" resultType="com.schoolParty.model.post">
