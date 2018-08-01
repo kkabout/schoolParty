@@ -23,4 +23,10 @@ public class PlateServiceImpl implements PlateService {
         List<plate> plate=plateDao.selectAll();
         return plate;
     }
+
+    @Override
+    public plate selectOne(String idplate) {
+        plate Plate = plateDao.selectOne(idplate);
+        return Plate;
+    }
 }
