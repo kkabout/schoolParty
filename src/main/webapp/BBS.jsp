@@ -26,11 +26,10 @@
 				<div class="BBS-nav">
 					<a href="#" title="主页"><i class="fa fa-coffee"></i></a>
 					<span class="spacer">></span>
-					<a href="#" title="论坛">论坛</a>
+					<a href="#" title="论坛">校园Party</a>
 					<span class="spacer">></span>
-					<a href="#" title="板块名">板块名</a>
-					<span class="spacer">></span>
-					<a href="#" title="板块名">板块名</a>
+					<a href="#" title="板块名">${plate.pname}</a>
+
 				</div>
 				<div class="BBS-post">
 					<div class="post-report">
@@ -38,8 +37,18 @@
 					</div>
 					<span class="page">
 						<div class="post-paging">
-							<strong>1</strong>
-							<a href="#">2</a>
+
+                            <c:forEach var="index" begin="1" end="${posts.totalpage}" step="1">
+                                <c:if test="${posts.pageNum==index}">
+                                    <strong>${index}</strong>
+                                </c:if>
+                                <c:if test="${posts.pageNum!=index}">
+                                    <a href="${basePath}/post/selectAllPost.go?idplate=${plate.idplate}&pageNum=${index}">${index}</a>
+                                </c:if>
+
+                            </c:forEach>
+							<!--<strong>1</strong>
+
 							<a href="#">3</a>
 							<a href="#">4</a>
 							<a href="#">5</a>
@@ -47,16 +56,27 @@
 							<a href="#">7</a>
 							<a href="#">8</a>
 							<a href="#">9</a>
-							<a href="#">...50</a>
+							<a href="#">...50</a>-->
 							<label>
-								<input type="text" value="1" style="height: 25px;width: 40px;color: #000;outline: none;">
-								<span>/50页</span>
+								<input type="text" value="${posts.pageNum}" style="height: 25px;width: 40px;color: #000;outline: none;">
+								<span>/${posts.totalpage}</span>
 							</label>
-							<a href="#">下一页&nbsp<i class="fa fa-chevron-circle-right"></i></a>
+                            <c:if  test="${posts.pageNum==posts.totalpage}">
+                                <a href="#">下一页&nbsp<i class="fa fa-chevron-circle-right"></i></a>
+                            </c:if>
+                            <c:if test="${posts.pageNum!=posts.totalpage}">
+                                <a href="${basePath}/post/selectAllPost.go?idplate=${plate.idplate}&pageNum=${posts.pageNum+1}">下一页&nbsp<i class="fa fa-chevron-circle-right"></i></a>
+                            </c:if>
+
 						</div>
 					</span>
 					<span class="page-back">
-						<a href="#"><i class="fa fa-chevron-circle-left"></i>&nbsp返回</a>
+                        <c:if test="${posts.pageNum==1}">
+                            <a href="#"><i class="fa fa-chevron-circle-left"></i>&nbsp上一页</a>
+                        </c:if>
+						<c:if test="${posts.pageNum!=1}">
+                            <a href="${basePath}/post/selectAllPost.go?idplate=${plate.idplate}&pageNum=${posts.pageNum-1}"><i class="fa fa-chevron-circle-left"></i>&nbsp上一页</a>
+                        </c:if>
 					</span>
 					
 				</div>
@@ -86,7 +106,7 @@
 										</th>
 									</tr>
 								</tbody>
-								<c:forEach items="${posts}" var="post">
+								<c:forEach items="${posts.list}" var="post">
 									<tbody>
 									<tr>
 										<th>
@@ -94,12 +114,11 @@
 												<div class="tctitle">
 													<em>[<a href="#" id="lable">${post.type}</a>]</em>
 													<a href="#" id="artitle">${post.title}</a>
-
 												</div>
 												<div class="tcauthor">
-													<div class="at">作者:&nbsp<a href="#" id="author">偷梗宗师西西卡</a><span id="time">${post.publishTime}</span></div>
+													<div class="at">作者:&nbsp<a href="#" id="author">${post.usernickname}</a><span id="time">${post.publishTime}</span></div>
 													<span class="spacer">|</span>
-													<div class="lastrp">最后发表：&nbsp<a href="#" id="lastreport">米姥爷</a><span>2018/7/26</span></div>
+													<!--<div class="lastrp">最后发表：&nbsp<a href="#" id="lastreport">米姥爷</a><span>2018/7/26</span></div>-->
 												</div>
 											</div>
 											<div class="checknum">
@@ -121,7 +140,7 @@
 					</div>
 				</div>
 				<div class="nextpage">
-					<a href="#">下一页</a>
+					<a href="${basePath}/post/selectAllPost.go?idplate=${plate.idplate}&pageNum=${posts.pageNum+1}">下一页</a>
 				</div>
 			</div>
 

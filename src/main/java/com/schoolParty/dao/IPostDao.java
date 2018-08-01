@@ -1,6 +1,6 @@
 package com.schoolParty.dao;
 
-import com.schoolParty.model.User;
+import com.schoolParty.model.pageBean;
 import com.schoolParty.model.post;
 
 import java.util.List;
@@ -11,5 +11,9 @@ public interface IPostDao {
     void insertPost(post Post);
 
 
-    List<post> selectAllPost(String idplate);
+
+
+    int selectCount();
+
+    List<post> selectAllPost(String idplate, int startIndex, int pagesize);
 }

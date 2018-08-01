@@ -6,4 +6,7 @@
     <select id="selectAll" resultType="plate" parameterType="Map">
         SELECT * FROM plate
     </select>
+    <select id="selectOne" resultType="plate">
+        SELECT * FROM plate WHERE idplate = #{idplate};
+    </select>
 </mapper>

@@ -1,8 +1,12 @@
 package com.schoolParty.controller;
 
+import com.schoolParty.model.plate;
 import com.schoolParty.model.post;
+import com.schoolParty.model.pageBean;
+import com.schoolParty.model.postshow;
 import com.schoolParty.service.IPostService;
 import com.schoolParty.service.IUserService;
+import com.schoolParty.service.PlateService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+
 @Controller
 @RequestMapping("/post")
 public class PostController {
@@ -20,6 +25,8 @@ public class PostController {
     private IPostService postService;
     @Resource
     private IUserService userService;
+    @Resource
+    private PlateService plateService;
     @RequestMapping(value = "insertPost.go",method = RequestMethod.POST)
     public String insertPost(post Post,String idplate,String userid)
     {
@@ -30,16 +37,19 @@ public class PostController {
         Post.setSectionId(Integer.parseInt(idplate));
         Post.setUserId(Integer.parseInt(userid));
         this.postService.insertPost(Post);
-        return "redirect:/post/selectAllPost.go";
+        return "redirect:/post/selectAllPost.go？idplate="+idplate;
 
     }
+
+
     @RequestMapping(value = "selectAllPost.go",method = {RequestMethod.POST,RequestMethod.GET})
-    public String selectAllPost(Model model,String idplate)
+    public String selectAllPost(Model model,String idplate,int pageNum)
     {
 
-        List<post> posts = this.postService.selectAllPost(idplate);
-        model.addAttribute("idplate",idplate);
-        model.addAttribute("posts",posts);
+        pageBean<postshow> postshow = this.postService.selectAllPost(idplate,pageNum);
+        plate Plate = this.plateService.selectOne(idplate);
+        model.addAttribute("plate",Plate);
+        model.addAttribute("posts",postshow);
         return "BBS";
 
 
