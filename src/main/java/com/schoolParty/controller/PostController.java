@@ -2,6 +2,8 @@ package com.schoolParty.controller;
 
 import com.schoolParty.model.plate;
 import com.schoolParty.model.post;
+import com.schoolParty.model.pageBean;
+import com.schoolParty.model.postshow;
 import com.schoolParty.service.IPostService;
 import com.schoolParty.service.IUserService;
 import com.schoolParty.service.PlateService;
@@ -14,6 +16,7 @@ import javax.annotation.Resource;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
 
 @Controller
 @RequestMapping("/post")
@@ -37,14 +40,16 @@ public class PostController {
         return "redirect:/post/selectAllPost.go？idplate="+idplate;
 
     }
+
+
     @RequestMapping(value = "selectAllPost.go",method = {RequestMethod.POST,RequestMethod.GET})
-    public String selectAllPost(Model model,String idplate)
+    public String selectAllPost(Model model,String idplate,int pageNum)
     {
 
-        List<post> posts = this.postService.selectAllPost(idplate);
+        pageBean<postshow> postshow = this.postService.selectAllPost(idplate,pageNum);
         plate Plate = this.plateService.selectOne(idplate);
         model.addAttribute("plate",Plate);
-        model.addAttribute("posts",posts);
+        model.addAttribute("posts",postshow);
         return "BBS";
 
 
