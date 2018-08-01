@@ -74,7 +74,6 @@ public class UserController {
         }else if(type==0){
             response.sendRedirect("/index/index");
         }
-
     }
 
 

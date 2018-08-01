@@ -22,6 +22,11 @@ public class IndexController {
     public String BBS(){
         return "BBS";
     }
+    @RequestMapping("/head")
+    public String head(){
+        return "head";
+    }
+
 
 
 

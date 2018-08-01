@@ -17,6 +17,35 @@
 
 
 </head>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var str=getCookie("remembermeCookie");
+		str = str.substr(1,str.length-1);
+		var nickname=str;
+		$("#nickname").val(nickname);
+
+	});
+
+	function getCookie(cname){
+		var name=cname+"=";
+		var ca=document.cookie.split(';');
+		for(var i=0;i<ca.length;i++){
+			var c=ca[i];
+			while (c.charAt(0)=='')c= c.substring(1);
+			if(c.indexOf(name)!=-1)return c.substring(name.length, c.length);
+		}
+		return "";
+	}
+
+	function remember(){
+		var remFlag = $("input[type='checkbox']").is(':checked');
+		if(remFlag==true){ //如果选中设置remFlag为1
+				$("#remFlag").val("1");
+		}else{ //如果没选中设置remFlag为""
+			$("#remFlag").val("");
+		}
+	}
+</script>
 <body>
 	<div class="container-fluid">
 		
@@ -54,11 +83,12 @@
 												<div class="main-info margin_top_28">
 													<form action="${basePath}/user/submitLogin" method="post" enctype="application/x-www-form-urlencoded" onsubmit="return loginsubmit()"><!-- 注册表单 -->
 														<div class=" line margin_bottom_40">
-															<input class="user_id_pwd " name="nickname" id="nickname" type="text"  placeholder="昵称(例：吃饭大魔王)" >
+															<input type="hidden" name="remFlag" id="remFlag"/>
+															<input class="user_id_pwd " name="nickname" id="nickname" type="text" value="${nickname}" placeholder="昵称(例：吃饭大魔王)" >
 															<p id="p_idTip" class="error_message"></p>
 														</div>
 														<div class=" line margin_bottom_40">
-															<input class="user_id_pwd" type="password" id="password" name="password"   placeholder="密码(6-16个字符组成，区分大小写)">
+															<input class="user_id_pwd" type="password" id="password" name="password" value="${password}"   placeholder="密码(6-16个字符组成，区分大小写)">
 															<p id="p_pwdTip" class="error_message"></p>
 														</div>
 														<div class=" line margin_bottom_40"><!-- 验证码 -->
@@ -67,7 +97,8 @@
 															<p id="p_verifycodeTip"></p>
 														</div>
 														<div class=" line margin_bottom_40">
-															<input type="checkbox" name="rememberme" value="1" ${not empty cookie.remembermeCookie? "checked='checked'" : ""}>记住用户名
+															<input name="aaaa" type="checkbox" onclick="remember();">记住用户名
+														<%--<input type="checkbox" name="rememberme" value="1 " ${not empty cookie.remembermeCookie? "checked='checked'" : ""}>记住用户名--%>
 																<%--<input type="checkbox" name="autoLogin" value="1" ${not empty cookie.autoLoginCookie? "checked='checked'" : ""}>自动登录--%>
 																<%--<input name="remember" type="checkbox" value="1" ${not empty cookie.rememberCookie? "checked='checked'" : ""}>--%>
 																<%--记住密码--%>
@@ -92,7 +123,7 @@
 									</div>
 								</div>
 							</div>
-							<li><a href="/register.jsp" target="_blank "><i class="fa fa-child "></i>&nbsp注册</a></li>
+							<li><a href="/user/register" target="_blank "><i class="fa fa-child "></i>&nbsp注册</a></li>
 						</c:if>
 
 						<c:if test="${!empty user}">

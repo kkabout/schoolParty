@@ -12,6 +12,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 
 @Service("userService")
@@ -65,11 +67,20 @@ public class UserServiceImpl implements IUserService {
         String serverCode=(String)request.getSession().getAttribute("code");
         User user=userDao.getUserByUid(nickname,password);
         if(user!=null){
-            String rememberme=request.getParameter("rememberme");
-            if("1".equals(rememberme)){
+//            String userName=user.getNickname();
+//            String Password=user.getPasswd();
+//            String rememberme=request.getParameter("rememberme");
+            String remFlag = request.getParameter("remFlag");
+            if("1".equals(remFlag)){
+//                String logininfo=userName;
                 Cookie remembermeCookie=new Cookie("remembermeCookie",user.getNickname());
                 remembermeCookie.setPath("/");
                 remembermeCookie.setMaxAge(60*60*24*7);
+                try {
+                    URLEncoder.encode(user.getNickname(), "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
                 response.addCookie(remembermeCookie);
             }else {
                 Cookie remembermeCookie=new Cookie("remembermeCookie","");
