@@ -105,6 +105,11 @@ public class UserController {
         response.sendRedirect(request.getContextPath()+"/index/index");
         return null;
     }
+
+    @RequestMapping("personInfo")
+    public String personInfo(){
+        return "personInfo";
+    }
 }
 
 

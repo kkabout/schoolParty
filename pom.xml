@@ -124,6 +124,7 @@
       <artifactId>spring-test</artifactId>
       <version>${spring.version}</version>
     </dependency>
+
     <!--MD5加密-->
     <dependency>
       <groupId>commons-codec</groupId>
@@ -177,48 +178,30 @@
       <artifactId>json</artifactId>
       <version>20180130</version>
     </dependency>
-    <!--jstl-->
-    <dependency>
-      <groupId>javax.servlet.jsp.jstl</groupId>
-      <artifactId>jstl-api</artifactId>
-      <version>1.2</version>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.servlet</groupId>
-          <artifactId>servlet-api</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>javax.servlet.jsp</groupId>
-          <artifactId>jsp-api</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
 
+    <!-- JSTL标签类 -->
     <dependency>
-      <groupId>org.glassfish.web</groupId>
-      <artifactId>jstl-impl</artifactId>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
       <version>1.2</version>
-      <exclusions>
-        <exclusion>
-          <groupId>javax.servlet</groupId>
-          <artifactId>servlet-api</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>javax.servlet.jsp</groupId>
-          <artifactId>jsp-api</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>javax.servlet.jsp.jstl</groupId>
-          <artifactId>jstl-api</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
-
 
   </dependencies>
 
+
   <build>
-    <finalName>SchoolParty</finalName>
+    <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/*.properties</include>
+          <include>**/*.xml</include>
+        </includes>
+        <filtering>false</filtering>
+      </resource>
+    </resources>
+    <finalName>ChatRobot</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -231,7 +214,6 @@
       </plugin>
     </plugins>
   </build>
-
 
 
 </project>

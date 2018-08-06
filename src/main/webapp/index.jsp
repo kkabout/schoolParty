@@ -224,7 +224,7 @@
                         <li><a href="/register.jsp" target="_blank "><i class="fa fa-child "></i>&nbsp注册</a></li>
                 </c:if>
                  <c:if test="${!empty user}">
-                        <li><a href="#">欢迎您，${user.nickname}</a></li>
+                        <li><a href="/user/personInfo">欢迎您，${user.nickname}</a></li>
                         <li><a href="${basePath}/user/logout"><i class="fa fa-child"></i>|退出</a></li>
                  </c:if>
                     </ul>
@@ -255,7 +255,7 @@
             <div class="Content2 ">
                 <img class="item1 " width="200px" src="${basePath}/image/img_xysh.jpg " title="${k.pdescription} "/>
 					<span style="float: left;margin:10px 100px; ">
-						<a href="${basePath}/post/selectAllPost.go?idplate=${k.idplate}" title="${k.pdescription}"/>${k.pname}(20)</a>
+						<a href="${basePath}/post/selectAllPost.go?idplate=${k.idplate}&pageNum=1" title="${k.pdescription}"/>${k.pname}(20)</a>
 					</span>
             </div>
           </c:forEach>
