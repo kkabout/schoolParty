@@ -22,6 +22,10 @@ public class UserServiceImpl implements IUserService {
     @Resource
     private IUserDao userDao;
 
+    public User showUser(String nickname){
+        return this.userDao.showUser(nickname);
+    }
+
     public User selectUser(String userId)
     {
         return this.userDao.selectUser(userId);
@@ -104,6 +108,14 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User getUserByUid(String nickname, String passwd) {
         return null;
+    }
+
+
+    public User getUserByNickname(String nickname){
+        return userDao.getUserByNickname(nickname);
+    }
+    public boolean changeInfo(User user){
+        return userDao.changeInfo(user);
     }
 
 }

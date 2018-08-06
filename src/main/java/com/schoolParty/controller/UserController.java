@@ -1,12 +1,14 @@
 package com.schoolParty.controller;
 
 import javax.imageio.ImageIO;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import com.schoolParty.model.User;
 import com.schoolParty.service.IUserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,14 +28,17 @@ public class UserController {
     private IUserService userService;
 
     @RequestMapping(value = "/showUser.do")
-    public void selectUser(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void selectUser(HttpServletRequest request, HttpServletResponse response,Model model) throws IOException, ServletException {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
-        String userId = (request.getParameter("id"));
-        User user = this.userService.selectUser(userId);
-        ObjectMapper mapper = new ObjectMapper();
-        response.getWriter().write(mapper.writeValueAsString(user));
-        response.getWriter().close();
+//        String userId = (request.getParameter("id"));
+        String nickname = (request.getParameter("nickname"));
+        User user = this.userService.showUser(nickname);
+        model.addAttribute("user",user);
+//        ObjectMapper mapper = new ObjectMapper();
+//        response.getWriter().write(mapper.writeValueAsString(user));
+//        response.getWriter().close();
+        request.getRequestDispatcher(request.getContextPath()+"/user/personInfo").forward(request,response);
     }
     @RequestMapping(value = "/registUser.go", method =RequestMethod.POST)
     public String insertUser(User user) {
@@ -109,6 +114,22 @@ public class UserController {
     @RequestMapping("personInfo")
     public String personInfo(){
         return "personInfo";
+    }
+
+    @RequestMapping("changeInfo")
+    public String changeInfo(User user, HttpServletRequest request, Model model){
+        User test=user;
+        if(userService.changeInfo(user)){
+            user=userService.getUserByNickname(user.getNickname());
+            request.getSession().setAttribute("user",user);
+            model.addAttribute("user",user);
+            return "redirect:/user/personInfo";
+//            return "personInfo";
+        }else {
+            return "/error";
+        }
+
+//        return "personInfo";
     }
 }
 

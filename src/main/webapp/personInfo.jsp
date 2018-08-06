@@ -6,12 +6,26 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
+    request.setAttribute("basePath",basePath);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
+
+        function changeInfo(){
+            var form=document.forms[0];
+            form.action="${basePath}/user/changeInfo";
+            form.method="post";
+            form.submit();
+            location.reload();
+        }
+
+
         $(function(){
 //            左侧li列表点击效果显示
             $("li#l_firstPage").click(function(){
@@ -417,7 +431,7 @@
                             <div class="right_line">
                                 <span class="r_span_m">性别：</span>
                                 <div>
-                                            <span >保密
+                                            <span >${user.sex}
                                             </span>
                                 </div>
                             </div>
@@ -433,7 +447,7 @@
                             </div>
                             <div class="right_line">
                                 <span class="r_span_m">学院：</span>
-                                <span>${user.institute}</span> <span>数计学院</span>
+                                <span>${user.institute}</span>
 
                             </div>
                             <div class="right_line">
@@ -479,15 +493,16 @@
                 </div>
                 <div id="r_myInfo" style="display:none">
                     <div class="right_user clearfix">
-                        <form >
+                        <form name="userForm">
                             <div class="right_user_l">
                                 <div class="right_line">
                                     <span class="r_span_m">用户名：</span>
                                     <div><span >吃饭大魔王</span></div>
                                 </div>
                                 <div class="right_line">
-                                    <span class="r_span_m">昵称：</span>
-                                    <div><input type="text" placeholder="你的昵称" class="input_inner" /></div>
+                                    <%--<span class="r_span_m">昵称：</span>--%>
+                                    <input type="text" name="nickname" placeholder="你的邮箱" class="input_inner" value="${user.nickname}" />
+                                    <%--<div><span >${user.nickname} </span></div>--%>
 
                                 </div>
                                 <div class="right_line">
@@ -500,9 +515,9 @@
                                     <span class="r_span_m">性别：</span>
                                     <div>
                                             <span >
-                                                <input type="radio" name="sex"/><lable>男</lable>
+                                                <input type="radio" name="sex" value="${user.sex}"/><lable>男</lable>
 
-                                                <input type="radio" name="sex"/><lable>女</lable>
+                                                <input type="radio" name="sex" value="${user.sex}"/><lable>女</lable>
 
                                                 <input type="radio" name="sex" checked/><lable>保密</lable>
                                             </span>
@@ -511,20 +526,20 @@
 
                                 <div class="right_line">
                                     <span class="r_span_m">邮箱：</span>
-                                    <div><input type="text" placeholder="你的邮箱" class="input_inner" /></div>
+                                    <div><input type="text" name="email" placeholder="你的邮箱" class="input_inner" value="${user.email}" /></div>
 
                                 </div>
                                 <div class="right_line">
                                     <span class="r_span_m">电话：</span>
-                                    <div><input type="text" placeholder="你的电话" class="input_inner" /></div>
+                                    <div><input type="text" name="phone" placeholder="你的电话" class="input_inner" value="${user.phone}"/></div>
                                 </div>
                                 <div class="right_line">
                                     <span class="r_span_m">学号：</span>
-                                    <div><input type="text" placeholder="你的学号" class="input_inner" /></div>
+                                    <div><input type="text" name="schoolid" placeholder="你的学号" class="input_inner" /></div>
                                 </div>
                                 <div class="right_line">
                                     <span class="r_span_m">学院：</span>
-                                    <div><input type="text" placeholder="大学名称" class="input_inner_min" /></div>
+                                    <%--<div><input type="text" placeholder="大学名称" class="input_inner_min" /></div>--%>
                                     <div><input type="text" placeholder="所在学院" class="input_inner_min" /></div>
                                 </div>
                                 <div class="right_line">
@@ -540,7 +555,7 @@
                             </div>
                             <div class="right_line" style="text-align: center;width: 789px">
                                 <div class="border_string"></div>
-                                <input class="save_button" type="submit" value="保存修改"  />
+                                <input class="save_button" type="submit" value="保存修改" onclick="changeInfo()" />
                             </div>
                         </form>
                     </div>
