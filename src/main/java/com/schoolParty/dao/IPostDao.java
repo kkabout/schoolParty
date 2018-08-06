@@ -16,4 +16,6 @@ public interface IPostDao {
     int selectCount();
 
     List<post> selectAllPost(String idplate, int startIndex, int pagesize);
+
+    post selectOnePost(String idpost);
 }

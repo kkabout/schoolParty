@@ -19,11 +19,7 @@ public class PostServiceImpl implements IPostService {
     private IPostDao postDao;
     @Resource
     private IUserDao userDao;
-    @Override
-    public post selectPost(String idpost) {
 
-        return null;
-    }
 
     @Override
     public void insertPost(post Post) {
@@ -36,6 +32,11 @@ public class PostServiceImpl implements IPostService {
 
     }
 
+    @Override
+    public post selectOnePost(String idpost) {
+        post Post = postDao.selectOnePost(idpost);
+        return Post;
+    }
 
 
     @Override
@@ -48,7 +49,8 @@ public class PostServiceImpl implements IPostService {
         for (post Post:posts
                 ) {
             String nickname = this.userDao.selectUser(String.valueOf(Post.getUserId())).getNickname();
-            postshow ps = new postshow(Post.getTitle(),nickname,Post.getPublishTime(),Post.getType());
+            postshow ps = new postshow(Post.getTitle(),nickname,Post.getPublishTime(),
+                    Post.getType(),String.valueOf(Post.getIdpost()));
             postshows.add(ps);
         }
         pb.setList(postshows);

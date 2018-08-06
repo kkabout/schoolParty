@@ -11,6 +11,7 @@ public class reply {
     private String content;//回复的具体内容,对应数据库中表字段 content text
     private int good;//回复被赞的次数,对应数据库中表字段 goods int(11)
 
+
     public reply() {
     }
 

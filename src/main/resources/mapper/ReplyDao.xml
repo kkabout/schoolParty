@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.schoolParty.dao.IReplyDao">
+    <select id="selectAllReply" resultType="reply" >
+        SELECT * FROM reply WHERE replyforid = #{arg0} limit #{arg1},#{arg2}
+
+    </select>
+    <select id="selectCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM reply WHERE replyforid = #{idpost};
+    </select>
+</mapper>
