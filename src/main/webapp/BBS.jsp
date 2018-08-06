@@ -113,10 +113,12 @@
 											<div class="tcommon">
 												<div class="tctitle">
 													<em>[<a href="#" id="lable">${post.type}</a>]</em>
-													<a href="#" id="artitle">${post.title}</a>
+													<a href="${basePath}/reply/selectAllReply?idpost=${post.idpost}&idplate=${plate.idplate}&pageNum=1" id="artitle">
+                                                            ${post.title}</a>
 												</div>
 												<div class="tcauthor">
-													<div class="at">作者:&nbsp<a href="#" id="author">${post.usernickname}</a><span id="time">${post.publishTime}</span></div>
+													<div class="at">作者:&nbsp<a href="#" id="author">${post.usernickname}</a>
+                                                        <span id="time">${post.publishTime}</span></div>
 													<span class="spacer">|</span>
 													<!--<div class="lastrp">最后发表：&nbsp<a href="#" id="lastreport">米姥爷</a><span>2018/7/26</span></div>-->
 												</div>
