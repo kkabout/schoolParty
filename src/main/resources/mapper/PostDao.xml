@@ -18,6 +18,9 @@
     <select id="selectCount" resultType="java.lang.Integer" >
         SELECT COUNT(*) FROM post;
     </select>
+    <select id="selectOnePost" resultType="com.schoolParty.model.post">
+        SELECT * FROM post WHERE idpost =#{idpost}
+    </select>
 
 
 </mapper>
