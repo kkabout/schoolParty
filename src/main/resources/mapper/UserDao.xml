@@ -45,5 +45,8 @@
         UPDATE user SET sex = #{sex},email=#{email},phone=#{phone} WHERE nickname=#{nickname}
     </update>
 
+    <update id="changePassword" parameterType="String">
+        UPDATE user SET passwd = #{passwd} WHERE nickname=#{nickname}
+    </update>
 
 </mapper>

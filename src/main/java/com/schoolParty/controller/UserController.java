@@ -126,10 +126,25 @@ public class UserController {
             return "redirect:/user/personInfo";
 //            return "personInfo";
         }else {
-            return "/error";
+            return "error";
         }
+    }
 
-//        return "personInfo";
+    @RequestMapping("changePasswd")
+    public void changePasswd( String nickname,String oldWord,String password,String confirmWord,HttpServletResponse response,HttpServletRequest request) throws IOException {
+        int type=userService.changePassword(nickname,oldWord,password,confirmWord,request);
+        response.setContentType("text/html;charset=UTF-8");
+        if(type==3){
+            response.getWriter().print("<script type='text/javascript'>alert('旧密码错误！');window.history.go(-1);</script>");
+        }
+        else if(type==1){
+            response.getWriter().print("<script type='text/javascript'>alert('新密码不能与原密码一样！');window.history.go(-1);</script>");
+        }else if(type==2){
+            response.getWriter().print("<script type='text/javascript'>alert('新密码与确认密码不一样！');window.history.go(-1);</script>");
+        }else if(type==0){
+            response.getWriter().print("<script type='text/javascript'>alert('密码修改成功！请重新登录');window.location.href=\"/index/index\";</script>");
+//            response.sendRedirect("/index/index");
+        }
     }
 }
 

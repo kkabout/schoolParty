@@ -22,8 +22,43 @@
             form.action="${basePath}/user/changeInfo";
             form.method="post";
             form.submit();
-            location.reload();
+//            location.reload();
         }
+
+        //表单验证
+        function changesubmit(){
+            var nickname=document.getElementById("nickname");
+            var oldWord=document.getElementById("OldWord");
+            var password=document.getElementById("password");
+            var confirmWord=document.getElementById("confirmWord");
+            if(oldWord.value==""){
+                alert("请输入旧密码");
+                oldWord.focus();
+                return false;
+            }
+
+            if(password.value==""){
+                alert("请输入新密码");
+                password.focus();
+                return false;
+            }
+
+            if(confirmWord.value==""){
+                alert("请确认新密码");
+                confirmWord.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        <%--function changePasswd(){--%>
+            <%--var form=document.forms[0];--%>
+            <%--form.action="${basePath}/user/changePasswd";--%>
+            <%--form.method="post";--%>
+            <%--form.submit();--%>
+<%--//            location.reload();--%>
+        <%--}--%>
 
 
         $(function(){
@@ -501,7 +536,7 @@
                                 </div>
                                 <div class="right_line">
                                     <%--<span class="r_span_m">昵称：</span>--%>
-                                    <input type="text" name="nickname" placeholder="你的邮箱" class="input_inner" value="${user.nickname}" />
+                                    <input type="text" id="nickname" name="nickname" placeholder="你的邮箱" class="input_inner" value="${user.nickname}" />
                                     <%--<div><span >${user.nickname} </span></div>--%>
 
                                 </div>
@@ -519,7 +554,7 @@
 
                                                 <input type="radio" name="sex" value="${user.sex}"/><lable>女</lable>
 
-                                                <input type="radio" name="sex" checked/><lable>保密</lable>
+                                                <input type="radio" name="sex" checked="0"/><lable>保密</lable>
                                             </span>
                                     </div>
                                 </div>
@@ -598,21 +633,28 @@
                 </div>
 
                 <div id="r_changePassword"  style="display:none">
-                    <form action="">
+                    <form  action="${basePath}/user/changePasswd" method="post" onsubmit="return changesubmit()">
+                        <div class="right_line">
+                            <%--<span class="r_span_m">昵称：</span>--%>
+                            <input type="text" id="nickname" name="nickname" placeholder="你的邮箱" class="input_inner" value="${user.nickname}" />
+                            <%--<div><span >${user.nickname} </span></div>--%>
+
+                        </div>
+
                         <div class="center_line">
                             <span>旧的密码：</span>
-                            <input type="password" class="input_inner" />
+                            <input type="password" name="oldWord" class="input_inner" />
                         </div>
                         <div class="center_line">
                             <span>新的密码：</span>
-                            <input type="password" class="input_inner"/>
+                            <input type="password" name="password" class="input_inner"/>
                         </div>
                         <div class="center_line">
                             <span>确认密码：</span>
-                            <input type="password" class="input_inner"/>
+                            <input type="password" name= "confirmWord"class="input_inner"/>
                         </div>
                         <div class="center_line">
-                            <input type="button" value="确认修改" class="save_button"/>
+                            <input type="submit" value="确认修改" class="submit_btn" />
                         </div>
                     </form>
                 </div>

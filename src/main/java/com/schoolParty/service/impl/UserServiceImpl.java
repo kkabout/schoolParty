@@ -5,6 +5,7 @@ import com.schoolParty.MyUtils.aliMessageSend;
 import com.schoolParty.dao.IUserDao;
 import com.schoolParty.model.User;
 import com.schoolParty.service.IUserService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -116,6 +117,27 @@ public class UserServiceImpl implements IUserService {
     }
     public boolean changeInfo(User user){
         return userDao.changeInfo(user);
+    }
+
+
+    public int changePassword(String nickname,String oldWord,String password,String confirmWord,HttpServletRequest request) {
+        String Md5Passwd = DigestUtils.md5Hex(password);
+
+        if(oldWord!=null && oldWord.equals(password)){
+            return 1;
+        }else if(!(password.equals(confirmWord))){
+            return 2;
+        }else {
+            boolean result =this.userDao.changePassword(Md5Passwd,nickname);
+            if(result){
+//                User user=userDao.getUserByUid(nickname,Md5Passwd);
+//                request.getSession().setAttribute("user",user);
+                request.getSession().removeAttribute("user");
+                return 0;
+            }else {
+                return 3;
+            }
+        }
     }
 
 }

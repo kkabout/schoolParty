@@ -26,4 +26,6 @@ public interface IUserService {
     public User getUserByNickname(String nickname);
 
     boolean changeInfo(User user);
+
+   int changePassword(String nickname,String oldWord,String password,String confirmWord,HttpServletRequest request);
 }
