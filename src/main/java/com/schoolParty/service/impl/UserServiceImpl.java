@@ -5,6 +5,7 @@ import com.schoolParty.MyUtils.aliMessageSend;
 import com.schoolParty.dao.IUserDao;
 import com.schoolParty.model.User;
 import com.schoolParty.service.IUserService;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,6 +13,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 
 @Service("userService")
@@ -19,6 +22,10 @@ public class UserServiceImpl implements IUserService {
 
     @Resource
     private IUserDao userDao;
+
+    public User showUser(String nickname){
+        return this.userDao.showUser(nickname);
+    }
 
     public User selectUser(String userId)
     {
@@ -65,11 +72,20 @@ public class UserServiceImpl implements IUserService {
         String serverCode=(String)request.getSession().getAttribute("code");
         User user=userDao.getUserByUid(nickname,password);
         if(user!=null){
-            String rememberme=request.getParameter("rememberme");
-            if("1".equals(rememberme)){
+//            String userName=user.getNickname();
+//            String Password=user.getPasswd();
+//            String rememberme=request.getParameter("rememberme");
+            String remFlag = request.getParameter("remFlag");
+            if("1".equals(remFlag)){
+//                String logininfo=userName;
                 Cookie remembermeCookie=new Cookie("remembermeCookie",user.getNickname());
                 remembermeCookie.setPath("/");
                 remembermeCookie.setMaxAge(60*60*24*7);
+                try {
+                    URLEncoder.encode(user.getNickname(), "UTF-8");
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
                 response.addCookie(remembermeCookie);
             }else {
                 Cookie remembermeCookie=new Cookie("remembermeCookie","");
@@ -93,6 +109,35 @@ public class UserServiceImpl implements IUserService {
     @Override
     public User getUserByUid(String nickname, String passwd) {
         return null;
+    }
+
+
+    public User getUserByNickname(String nickname){
+        return userDao.getUserByNickname(nickname);
+    }
+    public boolean changeInfo(User user){
+        return userDao.changeInfo(user);
+    }
+
+
+    public int changePassword(String nickname,String oldWord,String password,String confirmWord,HttpServletRequest request) {
+        String Md5Passwd = DigestUtils.md5Hex(password);
+
+        if(oldWord!=null && oldWord.equals(password)){
+            return 1;
+        }else if(!(password.equals(confirmWord))){
+            return 2;
+        }else {
+            boolean result =this.userDao.changePassword(Md5Passwd,nickname);
+            if(result){
+//                User user=userDao.getUserByUid(nickname,Md5Passwd);
+//                request.getSession().setAttribute("user",user);
+                request.getSession().removeAttribute("user");
+                return 0;
+            }else {
+                return 3;
+            }
+        }
     }
 
 }

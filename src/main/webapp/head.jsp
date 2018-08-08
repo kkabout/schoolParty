@@ -12,11 +12,119 @@
 	<link rel="stylesheet" type="text/css" href="/css/header.css">
 	<script src="/js/jquery-3.3.1.min.js" type="text/javascript"></script>
 	<script type="text/javascript" src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/js/head.js"></script>
 
 
+	<script type="text/javascript">
 
+		//表单验证
+		function loginsubmit(){
+			var nickname=document.getElementById("nickname");
+			var password=document.getElementById("password");
+			var code=document.getElementById("code");
+			if(nickname.value==""){
+				alert("请输入用户名");
+				nickname.focus();
+				return false;
+			}
+
+			if(password.value==""){
+				alert("请输入密码");
+				password.focus();
+				return false;
+			}
+
+			if(code.value==""){
+				alert("请输入验证码");
+				code.focus();
+				return false;
+			}
+
+			return true;
+		}
+		//获取验证码
+		function refCode(){
+			var date=new Date();
+			var imgcode=document.getElementById("imgcode");
+			imgcode.src="${basePath}/user/randrom?s="+date.getTime();
+		}
+
+
+	</script>
 
 </head>
+<style>
+
+	.codeImg,
+	.codeText,
+	.user_id_pwd,
+	.line
+	{height: 44px ;}
+
+	.user_id_pwd {
+		width:417px;
+		padding-left: 10px;
+	}
+	.line {
+		line-height: 44px;
+		width:417px;
+		margin: 0 auto;
+		position: relative;
+	}
+	.margin_top_28 {
+		margin-top: 28px;
+	}
+	.margin_bottom_40 {
+		margin-bottom:  40px;
+	}
+	.codeText {
+		width:280px ;
+		padding: 10px;
+	}
+	.codeImg {
+		width:100px ;
+		color: black;
+		text-align: center;
+	}
+
+	.float_left {
+		float:left;
+	}
+	.float_right {
+		float:right;
+	}
+
+	a {
+		text-decoration: none;
+
+	}
+	.text_align_right {
+		text-align:  right;
+	}
+	.text_align_left {
+		text-align: left;
+	}
+
+	.submit_btn {
+		width: 417px;
+		height: 40px;
+		margin: 0 auto;
+		color: black;
+		font-size: large;
+		background-color: #00a0da;
+	}
+	/* 圆角边框 */
+	.user_id_pwd,
+	.codeText,
+	.codeImg,
+	.submit_btn
+	{
+		-webkit-border-radius: 5px;
+		border: 1px solid #dfdfdf;
+		-moz-border-radius : 5px;
+	}
+
+</style>
 <body>
 	<div class="container-fluid">
 		
@@ -28,7 +136,7 @@
 						<a href="#"></a>
 					</div>
 					<ul>
-						<li id="index" class="tab nabactive" onclick="active(event)"><a href="index.jsp">门户</a></li>
+						<li id="index" class="tab nabactive" onclick="active(event)"><a href="/index/index">门户</a></li>
 						<li id="BBS" class="tab" onclick="active(event)"><a href="BBS.jsp">论坛</a></li>
 						<li id="message" class="tab" onclick="active(event)"><a href="#">Messages</a></li>
 					</ul>
@@ -96,7 +204,7 @@
 						</c:if>
 
 						<c:if test="${!empty user}">
-							<li><a href="#">欢迎您，${user.nickname}</a></li>
+							<li><a href="/user/personInfo">欢迎您，${user.nickname}</a></li>
 							<li><a href="${basePath}/user/logout"><i class="fa fa-child"></i>|退出</a></li>
 						</c:if>
 					</ul>
