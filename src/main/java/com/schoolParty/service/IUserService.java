@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 
 public interface IUserService {
 
+    public User showUser(String nickname);
+
     public User selectUser(String userId);
 
     void insertUser(User user);
@@ -20,4 +22,10 @@ public interface IUserService {
     public int checkLogin(String nickname, String password, String code, HttpServletResponse response, HttpServletRequest request);
 
     public User getUserByUid(String nickname,String passwd);
+
+    public User getUserByNickname(String nickname);
+
+    boolean changeInfo(User user);
+
+   int changePassword(String nickname,String oldWord,String password,String confirmWord,HttpServletRequest request);
 }

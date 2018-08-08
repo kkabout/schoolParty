@@ -8,6 +8,10 @@
         <result property="passwd" column="passwd" />
     </resultMap>
 
+
+    <select id="showUser" resultType="User" parameterType="String">
+        SELECT * FROM user WHERE nickname = #{nickname}
+    </select>
     <select id="selectUser" resultType="User" parameterType="String">
         SELECT * FROM user WHERE Uid = #{id}
     </select>
@@ -27,6 +31,9 @@
     <select id="getUserByUid"  resultMap="userMap">
         select * from user where nickname = #{arg0} AND passwd = #{arg1}
     </select>
+    <select id="getUserByNickname"  resultMap="userMap">
+        select * from user where nickname = #{arg0}
+    </select>
     <select id="insertPost" resultType="com.schoolParty.model.post">
          insert into user(
 		idpost,content,modifyTime,publishTime,title,sectionId,userId) values(
@@ -34,5 +41,12 @@
 		);
     </select>
 
+    <update id="changeInfo" parameterType="String">
+        UPDATE user SET sex = #{sex},email=#{email},phone=#{phone} WHERE nickname=#{nickname}
+    </update>
+
+    <update id="changePassword" parameterType="String">
+        UPDATE user SET passwd = #{passwd} WHERE nickname=#{nickname}
+    </update>
 
 </mapper>
