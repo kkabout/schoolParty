@@ -23,6 +23,7 @@
     <mybatis.version>3.4.1</mybatis.version>
   </properties>
 
+
   <dependencies>
 
     <!-- java ee -->
@@ -201,7 +202,7 @@
         <filtering>false</filtering>
       </resource>
     </resources>
-    <finalName>ChatRobot</finalName>
+    <finalName>shcoolParty</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
