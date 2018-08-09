@@ -71,6 +71,33 @@
             imgcode.src="${basePath}/user/randrom?s="+date.getTime();
         }
 
+        $(document).ready(function(){
+            //记住密码功能
+            var str = getCookie("remembermeCookie");
+//            自动填充用户名
+            $("#nickname").val(str);
+
+        });
+        //获取cookie
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+        //记住密码功能
+        function remember(){
+            var remFlag = $("input[type='checkbox']").is(':checked');
+            if(remFlag==true){ //如果选中设置remFlag为1
+                    $("#remFlag").val("1");
+                }else{
+                    $("#remFlag").val("");
+                }
+        }
 
     </script>
 </head>
@@ -183,7 +210,7 @@
                                             <div class="main-info margin_top_28">
                                                 <form action="${basePath}/user/submitLogin" method="post" enctype="application/x-www-form-urlencoded" onsubmit="return loginsubmit()"><!-- 注册表单 -->
                                                     <div class=" line margin_bottom_40">
-                                                        <input class="user_id_pwd " name="nickname" id="nickname" type="text"  placeholder="昵称(例：吃饭大魔王)" >
+                                                        <input class="user_id_pwd " name="nickname" id="nickname" type="text" placeholder="昵称(例：吃饭大魔王)" >
                                                         <p id="p_idTip" class="error_message"></p>
                                                     </div>
                                                     <div class=" line margin_bottom_40">
@@ -196,7 +223,7 @@
                                                         <p id="p_verifycodeTip"></p>
                                                     </div>
                                                     <div class=" line margin_bottom_40">
-                                                        <input type="checkbox" name="rememberme" value="1" ${not empty cookie.remembermeCookie? "checked='checked'" : ""}>记住用户名
+                                                        <input type="checkbox" name="remFlag" id="remFlag" value="1"  onclick="remember()">记住用户名
                                                         <%--<input type="checkbox" name="autoLogin" value="1" ${not empty cookie.autoLoginCookie? "checked='checked'" : ""}>自动登录--%>
                                                         <%--<input name="remember" type="checkbox" value="1" ${not empty cookie.rememberCookie? "checked='checked'" : ""}>--%>
                                                         <%--记住密码--%>

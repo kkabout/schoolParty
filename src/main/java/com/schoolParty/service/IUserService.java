@@ -21,11 +21,14 @@ public interface IUserService {
     // 通过用户名及密码核查用户登录
     public int checkLogin(String nickname, String password, String code, HttpServletResponse response, HttpServletRequest request);
 
-    public User getUserByUid(String nickname,String passwd);
+    public User getUser(String nickname,String passwd);
 
     public User getUserByNickname(String nickname);
 
     boolean changeInfo(User user);
 
    int changePassword(String nickname,String oldWord,String password,String confirmWord,HttpServletRequest request);
+
+//    User getUserBySchoolId(String schoolid);
+    int insertInfo(String truename,String institute,String schoolid,String nickname,HttpServletRequest request);
 }

@@ -10,6 +10,7 @@
     String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
     request.setAttribute("basePath",basePath);
 %>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,6 +50,29 @@
                 return false;
             }
 
+            return true;
+        }
+
+        function realnamesubmit(){
+            var truename=document.getElementById("truename");
+            var institute=document.getElementById("institute");
+            var schoolid=document.getElementById("schoolid");
+            var nickname=document.getElementById("nickname");
+            if(truename.value==""){
+                alert("请输入真实姓名");
+                truename.focus();
+                return false;
+            }
+            if(institute.value==""){
+                alert("请输入院系");
+                institute.focus();
+                return false;
+            }
+            if(schoolid.value==""){
+                alert("请输入学号");
+                schoolid.focus();
+                return false;
+            }
             return true;
         }
 
@@ -543,7 +567,13 @@
                                 <div class="right_line">
                                     <span class="r_span_m">真实姓名：</span>
                                     <span></span>
-                                    <span>*还未完成实名认证哦</span>
+                                    <c:if test="${empty user.truename}">
+                                        <span>*还未完成实名认证哦</span>
+                                    </c:if>
+                                    <c:if test="${!empty user.truename}">
+                                        <span>${user.truename}</span>
+                                    </c:if>
+
 
                                 </div>
                                 <div class="right_line">
@@ -586,7 +616,8 @@
                             </div>
                             <div class="right_user_r">
                                 <img src="img/user.JPG" class="user_photo" alt="user"/>
-                                <input type="text" class="input_inner " style="width: 120px"/><input type="button" value="选择图片"/>
+                                <%--<input type="text" class="input_inner " style="width: 120px"/><input type="button" value="选择图片"/>--%>
+                                <input type="file" name="file">
                             </div>
                             <div class="right_line" style="text-align: center;width: 789px">
                                 <div class="border_string"></div>
@@ -634,24 +665,25 @@
 
                 <div id="r_changePassword"  style="display:none">
                     <form  action="${basePath}/user/changePasswd" method="post" onsubmit="return changesubmit()">
-                        <div class="right_line">
-                            <%--<span class="r_span_m">昵称：</span>--%>
-                            <input type="text" id="nickname" name="nickname" placeholder="你的邮箱" class="input_inner" value="${user.nickname}" />
-                            <%--<div><span >${user.nickname} </span></div>--%>
+                        <%--<div class="right_line">--%>
 
+                        <%--</div>--%>
+                        <div class="center_line">
+                            <input type="hidden"  name="nickname" value="${user.nickname}"/>
                         </div>
 
                         <div class="center_line">
+                            <%--<input type="hidden"  name="nickname" class="input_inner" value="${user.nickname}" />--%>
                             <span>旧的密码：</span>
-                            <input type="password" name="oldWord" class="input_inner" />
+                            <input type="password" name="oldWord" id="oldWord" class="input_inner" />
                         </div>
                         <div class="center_line">
                             <span>新的密码：</span>
-                            <input type="password" name="password" class="input_inner"/>
+                            <input type="password" name="password" id="password"class="input_inner"/>
                         </div>
                         <div class="center_line">
                             <span>确认密码：</span>
-                            <input type="password" name= "confirmWord"class="input_inner"/>
+                            <input type="password" name= "confirmWord" id="confirmWord"class="input_inner"/>
                         </div>
                         <div class="center_line">
                             <input type="submit" value="确认修改" class="submit_btn" />
@@ -660,22 +692,27 @@
                 </div>
 
                 <div id="r_isRealName"  style="display:none">
+                    <c:if test="${empty user.schoolid}">
                     <div class="right_user" >
                         <span>tips:</span>
                         <h4>填写信息</h4>
-                        <form>
+                        <form action="${basePath}/user/realname" method="post" onsubmit="return realnamesubmit()">
+
+                            <div style="margin-bottom: 20px">
+                                <input type="hidden"  name="nickname" value="${user.nickname}"/>
+                            </div>
 
                             <div style="margin-bottom: 20px">
                                 <span>真实姓名：</span>
-                                <input type="text" class="input_inner"/>
+                                <input type="text" name="truename" id="truename" class="input_inner"/>
                             </div>
                             <div style="margin-bottom: 20px">
-                                <span>证件类型：</span>
-                                <input type="text" class="input_inner"/>
+                                <span>所在院系：</span>
+                                <input type="text" name="institute" id="institute" class="input_inner"/>
                             </div>
                             <div style="margin-bottom: 20px">
-                                <span>证件号码：</span>
-                                <input type="text" class="input_inner"/>
+                                <span>学号：</span>
+                                <input type="text" name="schoolid" id="schoolid" class="input_inner"/>
                             </div>
                             <div class="clearfix">
                                 <div class="realName_photo_div">
@@ -703,11 +740,17 @@
                                 </div>
                             </div>
                             <div class="center_line" style="margin-top:30px;border-top: 1px solid #e5e9ef;padding-top: 30px">
-                                <input type="button" value="提交认证" class="save_button"/>
+                                <input type="submit" value="提交认证" class="submit_btn"/>
                             </div>
 
                         </form>
                     </div>
+                    </c:if>
+                    <c:if test="${!empty user.schoolid}">
+                    <div class="center_line">
+                        <h4>您已通过实名认证！</h4>
+                    </div>
+                    </c:if>
 
 
 

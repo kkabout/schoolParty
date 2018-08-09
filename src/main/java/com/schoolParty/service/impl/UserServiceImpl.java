@@ -70,15 +70,15 @@ public class UserServiceImpl implements IUserService {
 
     public int checkLogin(String nickname, String password, String code, HttpServletResponse response, HttpServletRequest request) {
         String serverCode=(String)request.getSession().getAttribute("code");
-        User user=userDao.getUserByUid(nickname,password);
+        User user=userDao.getUser(nickname,password);
         if(user!=null){
-//            String userName=user.getNickname();
+            String userName=user.getNickname();
 //            String Password=user.getPasswd();
 //            String rememberme=request.getParameter("rememberme");
             String remFlag = request.getParameter("remFlag");
             if("1".equals(remFlag)){
-//                String logininfo=userName;
-                Cookie remembermeCookie=new Cookie("remembermeCookie",user.getNickname());
+                String logininfo=userName;
+                Cookie remembermeCookie=new Cookie("remembermeCookie",userName);
                 remembermeCookie.setPath("/");
                 remembermeCookie.setMaxAge(60*60*24*7);
                 try {
@@ -106,8 +106,12 @@ public class UserServiceImpl implements IUserService {
 
     }
 
+
+
+
+
     @Override
-    public User getUserByUid(String nickname, String passwd) {
+    public User getUser(String nickname, String passwd) {
         return null;
     }
 
@@ -136,6 +140,22 @@ public class UserServiceImpl implements IUserService {
                 return 0;
             }else {
                 return 3;
+            }
+        }
+    }
+
+    public int insertInfo(String truename,String institute,String schoolid ,String nickname,HttpServletRequest request){
+        User user=userDao.getUserBySchoolId(schoolid);
+        if(user!=null){
+            return 1;
+        }else{
+            boolean result=userDao.insertInfo(truename, institute, schoolid,nickname);
+            if(result){
+                user=userDao.getUserByNickname(nickname);
+                request.getSession().setAttribute("user",user);
+                return 2;
+            }else {
+                return 0;
             }
         }
     }

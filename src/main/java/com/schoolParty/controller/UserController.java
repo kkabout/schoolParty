@@ -2,6 +2,7 @@ package com.schoolParty.controller;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import com.schoolParty.model.User;
 import com.schoolParty.service.IUserService;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -117,12 +119,13 @@ public class UserController {
     }
 
     @RequestMapping("changeInfo")
-    public String changeInfo(User user, HttpServletRequest request, Model model){
+    public String changeInfo(User user, HttpServletRequest request, HttpServletResponse response) throws IOException {
         User test=user;
         if(userService.changeInfo(user)){
             user=userService.getUserByNickname(user.getNickname());
             request.getSession().setAttribute("user",user);
-            model.addAttribute("user",user);
+//            response.getWriter().print("<script type='text/javascript'>alert('修改成功！');</script>");
+//            model.addAttribute("user",user);
             return "redirect:/user/personInfo";
 //            return "personInfo";
         }else {
@@ -145,6 +148,20 @@ public class UserController {
             response.getWriter().print("<script type='text/javascript'>alert('密码修改成功！请重新登录');window.location.href=\"/index/index\";</script>");
 //            response.sendRedirect("/index/index");
         }
+    }
+
+    @RequestMapping("realname")
+    public void realname(String truename,String institute,String schoolid,String nickname,HttpServletResponse response,HttpServletRequest request) throws IOException {
+        int type=userService.insertInfo(truename,institute,schoolid,nickname,request);
+        response.setContentType("text/html;charset=UTF-8");
+        if(type==1){
+            response.getWriter().print("<script type='text/javascript'>alert('该学号已经认证！');window.history.go(-1);</script>");
+        }else if(type==2){
+            response.getWriter().print("<script type='text/javascript'>alert('认证成功！');window.location.href=\"/user/personInfo\";</script>");
+        }else {
+            response.getWriter().print("<script type='text/javascript'>alert('认证失败！');window.history.go(-1);</script>");
+        }
+
     }
 }
 
