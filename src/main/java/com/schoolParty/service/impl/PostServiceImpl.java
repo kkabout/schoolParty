@@ -1,6 +1,7 @@
 package com.schoolParty.service.impl;
 
 import com.schoolParty.dao.IPostDao;
+import com.schoolParty.dao.IReplyDao;
 import com.schoolParty.dao.IUserDao;
 import com.schoolParty.model.pageBean;
 import com.schoolParty.model.post;
@@ -19,6 +20,8 @@ public class PostServiceImpl implements IPostService {
     private IPostDao postDao;
     @Resource
     private IUserDao userDao;
+    @Resource
+    private IReplyDao replyDao;
 
 
     @Override
@@ -50,7 +53,8 @@ public class PostServiceImpl implements IPostService {
                 ) {
             String nickname = this.userDao.selectUser(String.valueOf(Post.getUserId())).getNickname();
             postshow ps = new postshow(Post.getTitle(),nickname,Post.getPublishTime(),
-                    Post.getType(),String.valueOf(Post.getIdpost()),Post.getEnd());
+                    Post.getType(),String.valueOf(Post.getIdpost()),
+                    Post.getEnd(),replyDao.selectCount(String.valueOf(Post.getIdpost())));
             postshows.add(ps);
         }
         pb.setList(postshows);

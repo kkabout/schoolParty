@@ -11,6 +11,7 @@ public class postshow {
     private String idpost;//帖子id
     private String content;//帖子内容
     private int end;//是否已被接单
+    private int totalRecord;//帖子有多少回复
 
     public postshow(String title, String usernickname, String publishTime, String type) {
         this.title = title;
@@ -29,13 +30,14 @@ public class postshow {
         this.content = content;
     }
 
-    public postshow(String title, String nickname, String publishTime, String type, String idpost,int end) {
+    public postshow(String title, String nickname, String publishTime, String type, String idpost,int end,int totalRecord) {
         this.title = title;
         this.usernickname = nickname;
         this.publishTime = publishTime;
         this.type = type;
         this.idpost = idpost;
         this.end = end;
+        this.totalRecord=totalRecord;
 
     }
 
@@ -118,5 +120,13 @@ public class postshow {
 
     public void setEnd(int end) {
         this.end = end;
+    }
+
+    public int getTotalRecord() {
+        return totalRecord;
+    }
+
+    public void setTotalRecord(int totalRecord) {
+        this.totalRecord = totalRecord;
     }
 }
