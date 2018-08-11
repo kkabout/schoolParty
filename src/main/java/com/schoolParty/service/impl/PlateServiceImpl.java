@@ -1,5 +1,6 @@
 package com.schoolParty.service.impl;
 
+import com.schoolParty.dao.IPostDao;
 import com.schoolParty.dao.PlateDao;
 
 import com.schoolParty.model.plate;
@@ -19,8 +20,16 @@ import java.util.Map;
 public class PlateServiceImpl implements PlateService {
     @Resource
     private PlateDao plateDao;
+    @Resource
+    private IPostDao postDao;
     public List<plate> selectAll(){
         List<plate> plate=plateDao.selectAll();
+        for (plate Plate:plate
+             ) {
+            Plate.setTotalRecord(postDao.selectCount(String.valueOf(Plate.getIdplate())));
+
+
+        }
         return plate;
     }
 

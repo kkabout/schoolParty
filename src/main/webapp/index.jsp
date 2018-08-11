@@ -255,7 +255,7 @@
             <div class="Content2 ">
                 <img class="item1 " width="200px" src="${basePath}/image/img_xysh.jpg " title="${k.pdescription} "/>
 					<span style="float: left;margin:10px 100px; ">
-						<a href="${basePath}/post/selectAllPost.go?idplate=${k.idplate}&pageNum=1" title="${k.pdescription}"/>${k.pname}(20)</a>
+						<a href="${basePath}/post/selectAllPost.go?idplate=${k.idplate}&pageNum=1" title="${k.pdescription}"/>${k.pname}(${k.totalRecord})</a>
 					</span>
             </div>
           </c:forEach>
