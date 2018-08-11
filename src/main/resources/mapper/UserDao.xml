@@ -28,7 +28,7 @@
     <select id="checkphone" resultType="int" parameterType="String">
         select count(*) from user where phone=#{phone}
     </select>
-    <select id="getUserByUid"  resultMap="userMap">
+    <select id="getUser"  resultMap="userMap">
         select * from user where nickname = #{arg0} AND passwd = #{arg1}
     </select>
     <select id="getUserByNickname"  resultMap="userMap">
@@ -41,12 +41,22 @@
 		);
     </select>
 
+    <!--修改个人信息-->
     <update id="changeInfo" parameterType="String">
-        UPDATE user SET sex = #{sex},email=#{email},phone=#{phone} WHERE nickname=#{nickname}
+        UPDATE user SET sex = #{sex},email=#{email},phone=#{phone},img=#{img}WHERE nickname=#{nickname}
     </update>
 
+    <!--修改密码-->
     <update id="changePassword" parameterType="String">
         UPDATE user SET passwd = #{passwd} WHERE nickname=#{nickname}
+    </update>
+
+    <!--实名认证-->
+    <select id="getUserBySchoolId"  resultMap="userMap">
+        select * from user where schoolid = #{schoolid}
+    </select>
+    <update id="insertInfo" parameterType="String" >
+        UPDATE user SET truename=#{arg0},institute=#{arg1},schoolid=#{arg2} WHERE nickname=#{arg3};
     </update>
 
 </mapper>

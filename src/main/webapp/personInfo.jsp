@@ -23,7 +23,7 @@
             form.action="${basePath}/user/changeInfo";
             form.method="post";
             form.submit();
-//            location.reload();
+            location.reload();
         }
 
         //表单验证
@@ -192,6 +192,16 @@
 
             });
         });
+
+        // 选择图片显示
+        function imgChange(obj) {
+//获取点击的文本框
+//            var choosefile =document.getElementById("choosefile");
+            var file=document.getElementById("choosefile");
+            var imgUrl =window.URL.createObjectURL(file.files[0]);
+            var img =document.getElementById('img');
+            img.setAttribute('src',imgUrl); // 修改img标签src属性值
+        };
 
     </script>
     <title></title>
@@ -533,7 +543,7 @@
                             </div>
                         </div>
                         <div class="right_user_r">
-                            <img src="img/user.JPG" class="user_photo" alt="user"/>
+                            <img src="${user.img}" class="user_photo" alt="user"/>
                             <div>
                                 <span >关注：</span><span >？</span>
                                 <span >粉丝：</span><span >？</span>
@@ -552,7 +562,7 @@
                 </div>
                 <div id="r_myInfo" style="display:none">
                     <div class="right_user clearfix">
-                        <form name="userForm">
+                        <form name="userForm" enctype="multipart/form-data">
                             <div class="right_user_l">
                                 <div class="right_line">
                                     <span class="r_span_m">用户名：</span>
@@ -580,11 +590,11 @@
                                     <span class="r_span_m">性别：</span>
                                     <div>
                                             <span >
-                                                <input type="radio" name="sex" value="${user.sex}"/><lable>男</lable>
+                                                <input type="radio" name="sex" value="男"/><lable>男</lable>
 
-                                                <input type="radio" name="sex" value="${user.sex}"/><lable>女</lable>
+                                                <input type="radio" name="sex" value="女"/><lable>女</lable>
 
-                                                <input type="radio" name="sex" checked="0"/><lable>保密</lable>
+                                                <input type="radio" name="sex" value="保密"/><lable>保密</lable>
                                             </span>
                                     </div>
                                 </div>
@@ -615,9 +625,11 @@
                                 </div>
                             </div>
                             <div class="right_user_r">
-                                <img src="img/user.JPG" class="user_photo" alt="user"/>
+                                <img id="img" name="img"src="${basePath}${user.img}" class="user_photo" alt="user"/>
                                 <%--<input type="text" class="input_inner " style="width: 120px"/><input type="button" value="选择图片"/>--%>
-                                <input type="file" name="file">
+                                <%--<input type="hidden" name="file" id="file" value="${basePath}${user.img}">--%>
+                                <input type="file" name="file"  id="file" value="${basePath}${user.img}" onchange="imgChange(this);">
+
                             </div>
                             <div class="right_line" style="text-align: center;width: 789px">
                                 <div class="border_string"></div>

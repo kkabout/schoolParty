@@ -172,6 +172,12 @@
         -moz-border-radius : 5px;
     }
 
+    .welcome1{
+        font-size: 20px;
+        color: red;
+        list-style: none;
+    }
+
 </style>
 <body>
 <div class="zhuye">
@@ -224,9 +230,6 @@
                                                     </div>
                                                     <div class=" line margin_bottom_40">
                                                         <input type="checkbox" name="remFlag" id="remFlag" value="1"  onclick="remember()">记住用户名
-                                                        <%--<input type="checkbox" name="autoLogin" value="1" ${not empty cookie.autoLoginCookie? "checked='checked'" : ""}>自动登录--%>
-                                                        <%--<input name="remember" type="checkbox" value="1" ${not empty cookie.rememberCookie? "checked='checked'" : ""}>--%>
-                                                        <%--记住密码--%>
                                                     </div>
 
                                                     <div class="line">
@@ -251,8 +254,8 @@
                         <li><a href="/register.jsp" target="_blank "><i class="fa fa-child "></i>&nbsp注册</a></li>
                 </c:if>
                  <c:if test="${!empty user}">
-                        <li><a href="/user/personInfo">欢迎您，${user.nickname}</a></li>
-                        <li><a href="${basePath}/user/logout"><i class="fa fa-child"></i>|退出</a></li>
+                        <span><a href="/user/personInfo" class="welcome1" style="margin-left: -110px">欢迎您，${user.nickname}</a></span>
+                        <span><a href="${basePath}/user/logout" class="welcome1" style="margin-left: 20px;border: 1px solid #dfdfdf;">|退出</a></span>
                  </c:if>
                     </ul>
                 </div>

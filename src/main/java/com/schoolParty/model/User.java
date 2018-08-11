@@ -1,5 +1,7 @@
 package com.schoolParty.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class User {
 
     private int uid; // 用户的id(登陆名),对应数据库表中字段 uid  INT PK
@@ -14,7 +16,15 @@ public class User {
     private String truename;//用户的真实姓名,对应数据库表中字段 truename varchar(45)
     private String img;//用户头像,对应数据库表中字段 img varchar(200)
     private int success;//用户成功拿取快递次数,succees  int
+    private MultipartFile file;
 
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
 
     public User() {
     }

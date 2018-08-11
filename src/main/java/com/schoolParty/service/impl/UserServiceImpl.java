@@ -73,8 +73,6 @@ public class UserServiceImpl implements IUserService {
         User user=userDao.getUser(nickname,password);
         if(user!=null){
             String userName=user.getNickname();
-//            String Password=user.getPasswd();
-//            String rememberme=request.getParameter("rememberme");
             String remFlag = request.getParameter("remFlag");
             if("1".equals(remFlag)){
                 String logininfo=userName;
