@@ -42,7 +42,7 @@ public class PostServiceImpl implements IPostService {
     @Override
     public pageBean<postshow> selectAllPost(String idplate, int pageNum) {
 
-        int totalRecord = this.postDao.selectCount();
+        int totalRecord = this.postDao.selectCount(idplate);
         pageBean pb = new pageBean(pageNum,10,totalRecord);
         List<post> posts = this.postDao.selectAllPost(idplate,pb.getStartIndex(),pb.getPagesize());
         List<postshow> postshows = new ArrayList<postshow>();
@@ -50,7 +50,7 @@ public class PostServiceImpl implements IPostService {
                 ) {
             String nickname = this.userDao.selectUser(String.valueOf(Post.getUserId())).getNickname();
             postshow ps = new postshow(Post.getTitle(),nickname,Post.getPublishTime(),
-                    Post.getType(),String.valueOf(Post.getIdpost()));
+                    Post.getType(),String.valueOf(Post.getIdpost()),Post.getEnd());
             postshows.add(ps);
         }
         pb.setList(postshows);

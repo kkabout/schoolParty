@@ -1,5 +1,8 @@
 package com.schoolParty.controller;
 
+import com.schoolParty.service.impl.PostServiceImpl;
+
+import javax.annotation.Resource;
 import java.awt.*;
 import java.sql.Timestamp;
 
@@ -14,4 +17,5 @@ public class testjava {
         String a = f.format(date);
         System.out.println(a);
     }
+
 }

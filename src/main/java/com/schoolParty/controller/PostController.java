@@ -50,7 +50,12 @@ public class PostController {
         plate Plate = this.plateService.selectOne(idplate);
         model.addAttribute("plate",Plate);
         model.addAttribute("posts",postshow);
-        return "BBS";
+        if(idplate.equals("2"))
+        {
+            return "express";
+        }
+        else
+            return "BBS";
 
 
     }

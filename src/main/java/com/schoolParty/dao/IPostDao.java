@@ -13,7 +13,7 @@ public interface IPostDao {
 
 
 
-    int selectCount();
+    int selectCount(String idplate);
 
     List<post> selectAllPost(String idplate, int startIndex, int pagesize);
 
