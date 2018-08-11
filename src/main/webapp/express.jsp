@@ -18,7 +18,7 @@
 				<div class="epr-nav">
 					<a href="#" title="主页"><i class="fa fa-coffee"></i></a>
 					<span class="spacer">></span>
-					<a href="#" title="论坛">论坛</a>
+					<a href="${basePath}/index/index" title="首页">首页</a>
 					<span class="spacer">></span>
 					<a href="#" title="代拿快递">代拿快递</a>
 				</div>
@@ -104,7 +104,7 @@
                                             <div class="tcommon">
                                                 <div class="tctitle">
                                                     <em>[<a href="#" id="lable">交易</a>]</em>
-                                                    <a href="#" id="artitle">${post.title}</a>
+                                                    <a href="${basePath}/reply/selectAllReply?idpost=${post.idpost}&idplate=${plate.idplate}&pageNum=1" id="artitle">${post.title}</a>
                                                     <c:if test="${post.end==1}">
                                                         <em class="eprsta"><已被接取></em>
                                                     </c:if>
@@ -164,7 +164,7 @@
 					</div>
 				</div>
 				<div class="nextpage">
-					<a href="#">下一页</a>
+					<a href="${basePath}/post/selectAllPost.go?idplate=${plate.idplate}&pageNum=${posts.pageNum+1}">下一页</a>
 				</div>
 			</div>
 		</div>

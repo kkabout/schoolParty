@@ -35,7 +35,12 @@ public class ReplyController {
         model.addAttribute("reply",pg);
         model.addAttribute("post",postshow);
         model.addAttribute("plate",Plate);
-        return "post";
+        if(idplate.equals("2"))
+        {
+            return "expresspost";
+        }
+        else
+            return "post";
     }
 
 }
