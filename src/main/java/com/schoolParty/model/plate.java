@@ -6,6 +6,7 @@ public class plate {
     private String pname;//板块的名称,对应数据库中表字段 pname varchar(45)
     private String plogo;//板块的logo,对应数据库中表字段 plogo varchar(200)
     private String pdescription;//板块的描述,对应数据库中表字段 pdescription varchar(200)
+    private int totalRecord;//板块中含有多少帖子 从数据库中查询得到
 
     public plate() {
     }
@@ -47,5 +48,13 @@ public class plate {
 
     public void setPdescription(String pdescription) {
         this.pdescription = pdescription;
+    }
+
+    public int getTotalRecord() {
+        return totalRecord;
+    }
+
+    public void setTotalRecord(int totalRecord) {
+        this.totalRecord = totalRecord;
     }
 }

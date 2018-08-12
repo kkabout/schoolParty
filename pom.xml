@@ -23,6 +23,7 @@
     <mybatis.version>3.4.1</mybatis.version>
   </properties>
 
+
   <dependencies>
 
     <!-- java ee -->
@@ -190,18 +191,19 @@
 
 
   <build>
-    <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
-    <resources>
-      <resource>
-        <directory>src/main/java</directory>
-        <includes>
-          <include>**/*.properties</include>
-          <include>**/*.xml</include>
-        </includes>
-        <filtering>false</filtering>
-      </resource>
-    </resources>
-    <finalName>ChatRobot</finalName>
+      <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
+      <resources>
+          <resource>
+              <directory>src/main/java</directory>
+              <includes>
+                  <include>**/*.properties</include>
+                  <include>**/*.xml</include>
+              </includes>
+              <filtering>false</filtering>
+          </resource>
+      </resources>
+
+    <finalName>shcoolParty</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

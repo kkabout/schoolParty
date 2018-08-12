@@ -21,6 +21,11 @@ public class IReplyServiceImpl implements IReplyService {
     @Override
     public pageBean<replyshow> selectAllReply(String idpost, int pageNum) {
         int totalRecord = replyDao.selectCount(idpost);
+        //发帖人的内容不算回帖 没有人回帖 为了能正确算出页数
+        if(totalRecord==0)
+        {
+         totalRecord++;
+        }
         pageBean<replyshow> pg = new pageBean<replyshow>(pageNum,10,totalRecord);
         List<reply> replies = replyDao.selectAllReply(idpost,pg.getStartIndex(),pg.getPagesize());
         List<replyshow> replyshows = new ArrayList<>();

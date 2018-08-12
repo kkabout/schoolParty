@@ -124,11 +124,11 @@
 												</div>
 											</div>
 											<div class="checknum">
-												<span id="rech">回复/查看</span>
+												<span id="rech">     回复</span>
 												<div>
-													<a href="#" id="renum">4396</a>
-													/
-													<span>6324</span>
+													<%--<a href="#" id="renum">4396</a>--%>
+													<%--/--%>
+													<span>     ${post.totalRecord}</span>
 												</div>
 											</div>
 										</th>

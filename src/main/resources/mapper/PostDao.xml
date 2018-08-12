@@ -16,7 +16,7 @@
     </select>
 
     <select id="selectCount" resultType="java.lang.Integer" >
-        SELECT COUNT(*) FROM post;
+        SELECT COUNT(*) FROM post WHERE sectionId=#{idplate};
     </select>
     <select id="selectOnePost" resultType="com.schoolParty.model.post">
         SELECT * FROM post WHERE idpost =#{idpost}

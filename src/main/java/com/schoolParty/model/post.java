@@ -25,6 +25,7 @@ top int(1)
     private int good;//帖子是否为精华帖,在数据库中对应的表字段 good int(1)
     private int top;//帖子是否为置顶贴,在数据库中对应的表字段 top int(1)
     private String type;//帖子类型
+    private int end;//是否已被接单
 
     public post() {
     }
@@ -120,5 +121,13 @@ top int(1)
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public int getEnd() {
+        return end;
+    }
+
+    public void setEnd(int end) {
+        this.end = end;
     }
 }
