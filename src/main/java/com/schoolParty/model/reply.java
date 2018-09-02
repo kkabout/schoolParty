@@ -25,6 +25,13 @@ public class reply {
         this.good = good;
     }
 
+    public reply(String rpublishTime, int replyforid, int ruserId, String content) {
+        this.rpublishTime = rpublishTime;
+        this.replyforid = replyforid;
+        this.ruserId = ruserId;
+        this.content = content;
+    }
+
     public int getRid() {
         return rid;
     }

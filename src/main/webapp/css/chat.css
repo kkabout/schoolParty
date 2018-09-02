@@ -3,7 +3,7 @@
     padding: 0;
 }
 .drag{
-    position:absolute;
+    position:fixed;
     padding:0;
     width: 560px;
     height: 400px;
@@ -126,7 +126,7 @@
 .drag_log{
     width:288px;
     height: 40px;
-    position: absolute;
+    position:fixed;
     bottom:0;
     right:0;
     background-color: #f2f2f5;

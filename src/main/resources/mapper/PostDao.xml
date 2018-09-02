@@ -11,7 +11,7 @@
 		);
     </select>
     <select id="selectAllPost" resultType="com.schoolParty.model.post">
-        select * from post WHERE sectionId=#{arg0}  limit #{arg1},#{arg2}
+        select * from post WHERE sectionId=#{arg0}   order by publishTime desc limit #{arg1},#{arg2};
 
     </select>
 

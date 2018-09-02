@@ -152,7 +152,7 @@
 					<div class="parea">
 						<form action="/post/insertPost.go" method="post">
 							<input type="hidden" name="userid" value="${user.uid}" />
-							<input type="hidden" name="idplate" value="${idplate}" />
+							<input type="hidden" name="idplate" value="${plate.idplate}" />
 							<div class="fph">
 								<div class="themesel">
 									<select name="type">

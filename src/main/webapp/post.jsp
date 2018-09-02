@@ -206,9 +206,53 @@
                         </table>
                     </div>
                 </c:forEach>
+                <c:if test="${!empty user}">
+                    <div class="fastpost">
+
+                        <div class="parea">
+                            <form action="/reply/insertReply" method="post">
+                                <input type="hidden" name="ruserid" value="${user.uid}" />
+                                <input type="hidden" name="replyforid" value="${post.idpost}" />
+                                <input type="hidden" name="idplate" value="${plate.idplate}"/>
+                                <div class="fph">
+                                    请输入回帖内容
+                                    <span></span>
+                                </div>
+                                <div class="fpm">
+                                    <div class="fpm-type">
+								<span class="admode">
+									<a href="#">高级模式</a>
+								</span>
+                                    </div>
+                                    <div class="fpm-tarea">
+                                        <textarea name="content" id="content"></textarea>
+                                    </div>
+                                    <!-- <script type="text/javascript" src="js/ckeditor5-build-classic/ckeditor.js"></script>
+                                    <script>
+                                        var myEditor = null;
+                                        window.onload = function(){
+                                             ClassicEditor
+                                            .create(document.querySelector("#editor"))
+                                            .then(editor => {
+                                                myEditor = editor;
+                                            })
+                                            .catch(error => {
+                                                console.error(error);
+                                            });
+                                        }
+                                    </script> -->
+                                </div>
+                                <div class="line">
+                                    <input class="submit_btn" type="submit" value="回帖" >
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </c:if>
 
 
-			</div>
+
+            </div>
 		</div>
 	</div>
     <jsp:include page="footer.jsp"></jsp:include>
