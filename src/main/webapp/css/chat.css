@@ -1,0 +1,134 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.drag{
+    position:absolute;
+    padding:0;
+    width: 560px;
+    height: 400px;
+    right: 0;
+    bottom: 0;
+    z-index: 950;
+    overflow: hidden;
+    display: none;
+    background-color: white;
+}
+
+.clearfix:after {
+    content:"";
+    display: block;
+    clear:both;
+}
+.dialog_list {
+    width: 156px;
+    border-right: 1px #d9d9d9 solid;
+    height: 400px;
+    display: inline-block;
+    float: left;
+
+}
+.dialog_list div{
+    overflow-y :auto;}
+
+.ul_drag li img{
+    width: 22px;
+    height: 22px;
+    margin:0  10px 0;
+}
+.dialog_list div,
+.dialog_top,
+.ul_drag li a
+{
+    height: 48px;
+    line-height: 48px;
+    border-bottom: 1px solid #d9d9d9;
+}
+.ul_drag li a{
+    display: block;
+    text-decoration:none;
+}
+.ul_drag li a:hover{
+    background-color:  #e1e2e5 ;
+}
+.dialog_box{
+    width: 400px;
+    height: 400px;
+    float: left;
+    overflow: hidden;
+    display: inline;
+
+}
+.dialog_top{
+    border-bottom: 1px solid #d9d9d9;
+   padding-left: 10px;
+
+}
+.dialog_top a{
+    text-decoration:none;
+}
+
+.dialog_show{
+    overflow-y :auto;
+    height: 300px;
+    background-color: #d9d9d9;
+
+}
+.dialog_show div{
+   padding: 10px;
+    overflow: auto;/*让主要内容区随内容自动撑开*/
+    overflow-y:hidden;/*把出现的滚动条隐藏，但是底下会被遮到一点，不完美*/
+    _height:1%;/*对IE的hack*/
+}
+.dialog_show div img{
+    width: 22px;
+    height: 22px;
+    display: inline;
+    float: right;
+    margin-left: 10px;
+}
+.dialog_show div span{
+    max-width: 300px;
+    display: inline;
+    line-height: 30px;
+    font-size: 16px;
+    float: right;
+    padding: 0 10px  0;
+}
+
+.dialog_bottom{
+    border-top: 1px solid #d9d9d9;
+    height: 48px;
+    line-height: 48px;
+    padding-left: 20px;
+}
+.dialog_input{
+    width: 300px;
+    height: 20px;
+    max-height: 100px;
+    margin-top: 10px;
+    padding: 5px 9px;
+}
+/*圆角边框*/
+.dialog_show div span,
+.dialog_input,
+.drag{
+    -webkit-border-radius: 5px;
+    border: 1px solid #d9d9d9;
+    -moz-border-radius : 5px;
+}
+
+.isChoose{
+    background-color: #d9d9d9;
+}
+
+
+.drag_log{
+    width:288px;
+    height: 40px;
+    position: absolute;
+    bottom:0;
+    right:0;
+    background-color: #f2f2f5;
+text-align: center;
+}

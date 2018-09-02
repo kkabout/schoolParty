@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
+<jsp:include page="head.jsp"></jsp:include>
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
@@ -168,6 +169,6 @@
 				</div>
 			</div>
 		</div>
-	
+    <jsp:include page="footer.jsp"></jsp:include>
 </body>
 </html>
