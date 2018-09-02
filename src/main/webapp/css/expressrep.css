@@ -1,0 +1,126 @@
+body{
+	min-width: 1200px;
+	background-color: rgba(236,236,236, 1.0);
+	font-family:"microsoft yahei", 宋体, "segoe ui", "lucida grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+}
+*{
+	margin: 0;
+	padding: 0;
+	word-break: break-word;
+}
+.w{
+	width: 1200px;
+	margin: 0 auto;
+}
+.hbgc{
+	width: 100%;
+	height: 200px;
+	border: 5px solid #FFF;
+	border-radius: 10px;
+	margin-top: 30px;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.hbgc img:hover{
+	
+}
+
+.post-nav{
+	width: 100%;
+	height: 30px;
+	margin: 10px 0;
+}
+.post-nav a{
+	line-height: 30px;
+	font-size: 15px;
+	text-decoration: none;
+	color: #DEB887;
+}
+.spacer{
+	color: #DEB887;
+}
+.repmain{
+	background-color: #fff;
+	border-radius: 10px;
+	height: auto;
+}
+.reph{
+	border-bottom: 1px dashed #EEA2AD;
+}
+.reph h1{
+	padding: 10px;
+	font-size: 28px;
+	font-weight: 500;
+}
+table{
+	border-collapse: collapse;
+	empty-cells: show;
+}
+
+.putm{
+	margin: 10px auto;
+    width: 760px;
+    border-bottom: 1px dotted #CDCDCD;
+}
+th{
+	font-weight: 400;
+}
+.putm th{
+	padding-right:10px !important;
+	width: 13em;
+	text-align: right;
+}
+.putm th,.putm td{
+	padding: 10px 2px;
+	line-height: 24px;
+}
+.putm th label{
+	color: #333333;
+	font-size: 18px;
+}
+.putm input[type="text"]{
+	width: 400px;
+	height: 30px;
+	font-size: 16px;
+	outline:none;
+	border-radius: 5px;
+	border: 1px solid #AAAAAA;
+}
+.putm textarea{
+	border-color: #AAAAAA;
+	width: 400px;
+	height: 200px;
+	outline:none;
+	resize:none;
+	font-family:"microsoft yahei", 宋体, "segoe ui", "lucida grande", Helvetica, Arial, sans-serif, FreeSans, Arimo;
+	font-size: 16px;
+	border-radius: 5px;
+}
+.putm input[type="text"]:focus,.putm textarea:focus{
+	border: 1px solid #EEA2AD;
+	box-shadow: 0 0 10px rgba(238,162,173, .4);
+}
+.rpbot{
+	margin: 0 auto;
+	padding: 10px;
+    width: 760px;
+}
+.rpbut,.rpcb{
+	padding-bottom: 10px;
+	text-align: center;
+}
+.rpbut button{
+	width: 120px;
+	height: 35px;
+	font-size: 17px;
+	border-radius: 5px;
+	background-color: #fff;
+	color: #F4A460;
+	border: 1px solid #F4A460;
+
+}
+.rpbut button:hover{
+	background-color: #F4A460;
+	color:#fff ;
+	cursor: pointer;
+}
