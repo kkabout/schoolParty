@@ -170,5 +170,8 @@
 			</div>
 		</div>
     <jsp:include page="footer.jsp"></jsp:include>
+    <c:if test="${!empty user}">
+        <jsp:include page="chat.jsp"></jsp:include>
+    </c:if>
 </body>
 </html>

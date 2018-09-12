@@ -31,6 +31,12 @@
     <select id="getUserByUid"  resultMap="userMap">
         select * from user where nickname = #{arg0} AND passwd = #{arg1}
     </select>
+    <select id="findFriendByid" parameterType="int" resultType="com.schoolParty.model.User">
+        select *
+        from friend F
+        inner join user U on F.follow =U.uid
+        where F.curid = #{id}
+    </select>
     <select id="getUserByNickname"  resultMap="userMap">
         select * from user where nickname = #{arg0}
     </select>

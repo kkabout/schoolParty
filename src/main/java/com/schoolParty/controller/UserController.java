@@ -67,6 +67,7 @@ public class UserController {
         return "register";
     }
 
+
     @RequestMapping("/submitLogin")
     public void submitLogin(String nickname, String password, String code, HttpServletResponse response, HttpServletRequest request) throws Exception {
         String Md5Passwd=DigestUtils.md5Hex(password);
@@ -145,6 +146,7 @@ public class UserController {
             response.getWriter().print("<script type='text/javascript'>alert('密码修改成功！请重新登录');window.location.href=\"/index/index\";</script>");
 //            response.sendRedirect("/index/index");
         }
+
     }
 }
 

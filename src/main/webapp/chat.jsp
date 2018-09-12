@@ -19,9 +19,10 @@
             </div>
             <div id="user_list" style="height: 350px">
                 <ul class="ul_drag">
-                    <li><a href="#"><img src="img/user.png"/><span>pickname1</span></a></li>
-                    <li><a href="#"><img src="img/user.png"/><span>pickname2</span></a></li>
-                    <li><a href="#"><img src="img/user.png"/><span>pickname3</span></a></li>
+                    <c:forEach items="${ulists}" var="list">
+                        <li><a href="#"><img src="${list.img}"/><span>${list.nickname}</span></a></li>
+                    </c:forEach>
+
 
                 </ul>
             </div>
