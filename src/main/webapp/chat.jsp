@@ -7,6 +7,51 @@
     <title></title>
     <link rel="stylesheet" href="/css/chat.css"/>
 </head>
+<script type="text/javascript">
+    var websocket = null;
+
+    if ('WebSocket' in window) {
+        websocket = new WebSocket("ws://localhost:9027");
+    }
+    else if ('MozWebSocket' in window) {
+        websocket = new MozWebSocket("ws://localhost:9027");
+    }
+    else {
+        websocket = new SockJS("ws://localhost:9027");
+    }
+    websocket.onopen = onOpen;
+    websocket.onmessage = onMessage;
+    websocket.onerror = onError;
+    websocket.onclose = onClose;
+
+    function onOpen(openEvt) {
+        alert(openEvt.Data);
+    }
+
+    function onMessage(evt) {
+        alert(evt.data);
+    }
+    function onError() {}
+    function onClose() {}
+
+    function doSendUser() {
+        alert(websocket.readyState)
+        if (websocket.readyState == 1) {
+            var msg = document.getElementById("inputMsg").value;
+            websocket.send("#anyone#"+msg);//调用后台handleTextMessage方法
+            alert("发送成功!");
+        }
+    }
+
+
+
+
+
+    window.close=function()
+        {
+            websocket.onclose();
+        }
+</script>
 <body>
 
     <div class="drag_log">
@@ -35,6 +80,7 @@
             <div class="dialog_show clearfix"></div>
             <div class="dialog_bottom">
                 <textarea class="dialog_input" placeholder="回车发送"></textarea>
+                <button onclick="doSendUser();">发送</button>
             </div>
         </div>
     </div>
