@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.ui.Model;
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -41,6 +43,15 @@ public class ReplyController {
         }
         else
             return "post";
+    }
+    @RequestMapping("/insertReply")
+    public String insertReply(String ruserid ,String replyforid,String content,String idplate)
+    {
+        Date date = new Date();
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        replyService.insertReply(ruserid,replyforid,content,f.format(date));
+        return "redirect:/reply/selectAllReply?idpost="+replyforid+"&idplate="+idplate+"&pageNum=1";
     }
 
 }

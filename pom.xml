@@ -187,21 +187,38 @@
       <version>1.2</version>
     </dependency>
 
+      <!--WebSocket 依赖 -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-messaging</artifactId>
+          <version>4.0.5.RELEASE</version>
+      </dependency>
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-websocket</artifactId>
+          <version>4.0.5.RELEASE</version>
+      </dependency>
+      <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.3.1</version>
+      </dependency>
+
   </dependencies>
 
 
   <build>
-      <!-- 如果不添加此节点mybatis的mapper.xml文件都会被漏掉。 -->
-      <resources>
-          <resource>
-              <directory>src/main/java</directory>
-              <includes>
-                  <include>**/*.properties</include>
-                  <include>**/*.xml</include>
-              </includes>
-              <filtering>false</filtering>
-          </resource>
-      </resources>
+       <!--&lt;!&ndash;如果不添加此节点mybatis的mapper.xml文件都会被漏掉。&ndash;&gt;-->
+      <!--<resources>-->
+          <!--<resource>-->
+              <!--<directory>src/main/java</directory>-->
+              <!--<includes>-->
+                  <!--<include>**/*.properties</include>-->
+                  <!--<include>**/*.xml</include>-->
+              <!--</includes>-->
+              <!--<filtering>false</filtering>-->
+          <!--</resource>-->
+      <!--</resources>-->
 
     <finalName>shcoolParty</finalName>
     <plugins>

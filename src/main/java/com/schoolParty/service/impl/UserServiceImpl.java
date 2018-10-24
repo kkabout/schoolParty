@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.List;
 
 
 @Service("userService")
@@ -44,6 +45,12 @@ public class UserServiceImpl implements IUserService {
         isExits =this.userDao.checkUser(nickname);
         return isExits>0?true:false;
     }
+
+    @Override
+    public List<User> findFriendByid(int id) {
+        return userDao.findFriendByid(id);
+    }
+
 
     @Override
     public boolean checkphone(String phone) {
@@ -93,6 +100,9 @@ public class UserServiceImpl implements IUserService {
                 remembermeCookie.setMaxAge(0);
                 response.addCookie(remembermeCookie);
             }
+            int uid = userDao.getUserByNickname(nickname).getUid();
+            List<User> ulists = userDao.findFriendByid(uid);
+            request.getSession().setAttribute("ulists",ulists);
             request.getSession().setAttribute("user",user);
             if(serverCode!=null && serverCode.equalsIgnoreCase(code)){
                 return 0;

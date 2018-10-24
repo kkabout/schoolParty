@@ -10,4 +10,6 @@ public interface IReplyDao {
     List<reply> selectAllReply(String idpost,int startIndex, int pagesize);
 
     int selectCount(String idpost);
+
+    void insertReply(reply Reply);
 }

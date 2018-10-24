@@ -285,5 +285,8 @@
         </div>
     </div>
 </div>
+<c:if test="${!empty user}">
+    <jsp:include page="chat.jsp"></jsp:include>
+</c:if>
 </body>
 </html>

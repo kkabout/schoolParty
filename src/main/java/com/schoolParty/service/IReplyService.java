@@ -10,4 +10,5 @@ public interface IReplyService {
     public pageBean<replyshow> selectAllReply(String idpost, int pageNum);
 
 
+    void insertReply(String ruserid, String replyforid, String content, String format);
 }

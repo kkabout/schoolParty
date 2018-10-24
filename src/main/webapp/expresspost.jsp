@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
+<jsp:include page="head.jsp"></jsp:include>
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
@@ -210,6 +211,9 @@
                 </c:forEach>
 
 
-	
+                <jsp:include page="footer.jsp"></jsp:include>
+                <c:if test="${!empty user}">
+                    <jsp:include page="chat.jsp"></jsp:include>
+                </c:if>
 </body>
 </html>

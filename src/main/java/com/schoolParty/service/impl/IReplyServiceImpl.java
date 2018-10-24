@@ -50,4 +50,10 @@ public class IReplyServiceImpl implements IReplyService {
 
         return pg;
     }
+
+    @Override
+    public void insertReply(String ruserid, String replyforid, String content, String rpublishTime) {
+        reply Reply = new reply(rpublishTime,Integer.parseInt(replyforid),Integer.parseInt(ruserid),content);
+        replyDao.insertReply(Reply);
+    }
 }

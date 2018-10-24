@@ -8,4 +8,9 @@
     <select id="selectCount" resultType="java.lang.Integer">
         SELECT COUNT(*) FROM reply WHERE replyforid = #{idpost};
     </select>
+    <select id="insertReply" >
+        INSERT INTO reply (
+        rpublishTime,replyforid,ruserid,content)
+        VALUE (#{rpublishTime},#{replyforid},#{ruserId},#{content});
+    </select>
 </mapper>
