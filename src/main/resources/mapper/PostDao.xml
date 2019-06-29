@@ -6,13 +6,16 @@
 
     <select id="insertPost">
          insert into post(
-		idpost,content,modifyTime,publishTime,title,sectionId,userId,type) values(
-		#{idpost},#{content},#{modifyTime},#{publishTime},#{title},#{sectionId},#{userId},#{type}
+		idpost,content,modifyTime,publishTime,title,sectionId,userId,type,kdcode,kdphone,kdcompany,kdname) values(
+		#{idpost},#{content},#{modifyTime},#{publishTime},#{title},#{sectionId},#{userId},#{type},#{kdcode},#{kdphone},#{kdcompany},#{kdname}
 		);
     </select>
     <select id="selectAllPost" resultType="com.schoolParty.model.post">
         select * from post WHERE sectionId=#{arg0}   order by publishTime desc limit #{arg1},#{arg2};
 
+    </select>
+    <select id="deletePost"  >
+        delete FROM post WHERE idpost=#{idpost};
     </select>
 
     <select id="selectCount" resultType="java.lang.Integer" >
@@ -21,6 +24,16 @@
     <select id="selectOnePost" resultType="com.schoolParty.model.post">
         SELECT * FROM post WHERE idpost =#{idpost}
     </select>
+
+    <select id="postcount" resultType="java.lang.Integer" >
+        SELECT COUNT(*) FROM post;
+    </select>
+    <update id="changeEnd">
+        update  post
+        set end = 1
+        where idpost = #{idpost};
+    </update>
+
 
 
 </mapper>

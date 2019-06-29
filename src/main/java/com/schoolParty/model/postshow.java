@@ -12,6 +12,10 @@ public class postshow {
     private String content;//帖子内容
     private int end;//是否已被接单
     private int totalRecord;//帖子有多少回复
+    private String kdcode;
+    private String kdphone;
+    private String kdcompany;
+    private String kdname;
 
     public postshow(String title, String usernickname, String publishTime, String type) {
         this.title = title;
@@ -20,7 +24,8 @@ public class postshow {
         this.type = type;
     }
 
-    public postshow(String title, String usernickname, String publishTime, String type, String img ,String idpost,String content) {
+    public postshow(String title, String usernickname, String publishTime, String type, String img ,String idpost,String content,
+    String kdcode,String kdphone,String kdconpany,String kdname) {
         this.title = title;
         this.usernickname = usernickname;
         this.publishTime = publishTime;
@@ -28,6 +33,10 @@ public class postshow {
         this.img = img;
         this.idpost = idpost;
         this.content = content;
+        this.kdcode = kdcode;
+        this.kdphone = kdphone;
+        this.kdcompany = kdconpany;
+        this.kdname = kdname;
     }
 
     public postshow(String title, String nickname, String publishTime, String type, String idpost,int end,int totalRecord) {
@@ -128,5 +137,37 @@ public class postshow {
 
     public void setTotalRecord(int totalRecord) {
         this.totalRecord = totalRecord;
+    }
+
+    public String getKdcode() {
+        return kdcode;
+    }
+
+    public void setKdcode(String kdcode) {
+        this.kdcode = kdcode;
+    }
+
+    public String getKdphone() {
+        return kdphone;
+    }
+
+    public void setKdphone(String kdphone) {
+        this.kdphone = kdphone;
+    }
+
+    public String getKdcompany() {
+        return kdcompany;
+    }
+
+    public void setKdcompany(String kdcompany) {
+        this.kdcompany = kdcompany;
+    }
+
+    public String getKdname() {
+        return kdname;
+    }
+
+    public void setKdname(String kdname) {
+        this.kdname = kdname;
     }
 }

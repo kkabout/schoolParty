@@ -1,13 +1,15 @@
 package com.schoolParty.model;
 
 public class replyshow {
+    private int rid;//回复编号
     private String nickname;//当前楼用户的昵称
     private String img;//当前楼用户的头像
     private String publishTime;//当前楼用户回复的时间
     private String content;//当前楼用户回复的内容
     private int num;//回复在当前页的楼层
 
-    public replyshow(String nickname, String img, String publishTime, String content,int num) {
+    public replyshow(int rid ,String nickname, String img, String publishTime, String content,int num) {
+        this.rid = rid;
         this.nickname = nickname;
         this.img = img;
         this.publishTime = publishTime;
@@ -53,5 +55,13 @@ public class replyshow {
 
     public void setNum(int num) {
         this.num = num;
+    }
+
+    public int getRid() {
+        return rid;
+    }
+
+    public void setRid(int rid) {
+        this.rid = rid;
     }
 }

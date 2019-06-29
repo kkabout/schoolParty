@@ -123,6 +123,11 @@
 		border: 1px solid #dfdfdf;
 		-moz-border-radius : 5px;
 	}
+    .welcome1{
+        font-size: 20px;
+        color: red;
+        list-style: none;
+    }
 
 </style>
 <body>
@@ -137,7 +142,7 @@
 					</div>
 					<ul>
 						<li id="index" class="tab nabactive" onclick="active(event)"><a href="/index/index">门户</a></li>
-						<li id="BBS" class="tab" onclick="active(event)"><a href="BBS.jsp">论坛</a></li>
+						<li id="BBS" class="tab" onclick="active(event)"><a href="/index/index">论坛</a></li>
 						<li id="message" class="tab" onclick="active(event)"><a href="#">Messages</a></li>
 					</ul>
 				</div>
@@ -204,8 +209,8 @@
 						</c:if>
 
 						<c:if test="${!empty user}">
-							<li><a href="/user/personInfo">欢迎您，${user.nickname}</a></li>
-							<li><a href="${basePath}/user/logout"><i class="fa fa-child"></i>|退出</a></li>
+                            <span><a href="/user/personInfo?uid=${user.uid}" class="welcome1" style="margin-left: -110px">欢迎您，${user.nickname}</a></span>
+                            <span><a href="${basePath}/user/logout" class="welcome1" style="margin-left: 20px;border: 1px solid #dfdfdf;">|退出</a></span>
 						</c:if>
 					</ul>
 				</div>

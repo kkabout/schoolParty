@@ -34,7 +34,7 @@ public class IReplyServiceImpl implements IReplyService {
         {
 
              User user = userDao.selectUser(String.valueOf(replies.get(i).getRuserId()));
-             replyshow rs = new replyshow(user.getNickname(),user.getImg(),
+             replyshow rs = new replyshow(replies.get(i).getRid(),user.getNickname(),user.getImg(),
                      replies.get(i).getRpublishTime(),replies.get(i).getContent(),i+1);
              replyshows.add(rs);
         }
@@ -49,6 +49,16 @@ public class IReplyServiceImpl implements IReplyService {
         pg.setList(replyshows);
 
         return pg;
+    }
+
+    @Override
+    public int countreply() {
+        return replyDao.replycount();
+    }
+
+    @Override
+    public void deleteReply(int rid) {
+        replyDao.deleteReply(rid);
     }
 
     @Override

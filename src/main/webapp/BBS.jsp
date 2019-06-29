@@ -123,6 +123,16 @@
 													<!--<div class="lastrp">最后发表：&nbsp<a href="#" id="lastreport">米姥爷</a><span>2018/7/26</span></div>-->
 												</div>
 											</div>
+                                            <form action="/post/deletepost" method="post">
+                                                <div class="deletepost">
+                                                    <c:if test="${user.isadmin gt 0}">
+                                                        <input type="hidden" name="idpost" value="${post.idpost}" />
+                                                        <input type="hidden" name="idplate" value="${plate.idplate}" />
+                                                        <input class="post-report"  type="submit" value="删帖" >
+                                                    </c:if>
+                                                </div>
+                                            </form>
+
 											<div class="checknum">
 												<span id="rech">     回复</span>
 												<div>

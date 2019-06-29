@@ -9,6 +9,16 @@
 	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="/css/post.css">
+    <!-- 新 Bootstrap4 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- popper.min.js 用于弹窗、提示、下拉菜单 -->
+    <script src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+
+    <!-- 最新的 Bootstrap4 核心 JavaScript 文件 -->
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="w">
@@ -117,7 +127,7 @@
                                         </div>
                                         <div class="aul">
                                             <div class="avatar">
-                                                <a href="#"><img src=${post.img}></a>
+                                                <a href="#"><img  class="img-responsive center-block" src=${post.img}></a>
                                             </div>
                                         </div>
                                     </div>
@@ -129,7 +139,7 @@
                                             <div class="plhtime">
                                                 <em>发表于2018/8/4</em>
                                                 <span class="spacer">|</span>
-                                                <a href="#">只看该作者</a>
+                                                <%--<a href="#">只看该作者</a>--%>
                                             </div>
                                         </div>
                                         <div class="plele">
@@ -141,9 +151,6 @@
                             <tr>
                                 <td class="plsl"></td>
                                 <td class="plp">
-                                    <div class="plbt hid">
-                                        <em><i class="fa fa-comment-o"></i>&nbsp<a href="#">回复</a></em>
-                                    </div>
                                 </td>
                             </tr>
                             <tr class="sp">
@@ -165,11 +172,11 @@
                                 <td class="plsl">
                                     <div class=" plau">
                                         <div class="auname">
-                                            <a href="#">${reply1.nickname}</a>
+                                            <a href="/user/otherinfo?nickname=${reply1.nickname}&curid=${user.uid}">${reply1.nickname}</a>
                                         </div>
                                         <div class="aul">
                                             <div class="avatar">
-                                                <a href="#"><img src=${reply1.img}></a>
+                                                <a href="#"><img class="img-responsive center-block" src=${reply1.img}></a>
                                             </div>
                                         </div>
                                     </div>
@@ -181,7 +188,7 @@
                                             <div class="plhtime">
                                                 <em>${reply1.publishTime}</em>
                                                 <span class="spacer">|</span>
-                                                <a href="#">只看该作者</a>
+                                                <%--<a href="#">只看该作者</a>--%>
                                             </div>
                                         </div>
                                         <div class="plele">
@@ -195,6 +202,12 @@
                                 <td class="plp">
                                     <div class="plbt hid">
                                         <em><i class="fa fa-comment-o"></i>&nbsp<a href="#">回复</a></em>
+                                        <c:if test="${user.isadmin gt 0}">
+                                            <em><i class="fa fa-comment-o"></i>&nbsp<a href="/reply/deleteReply?replyforid=${post.idpost}&idplate=${plate.idplate}&rid=${reply1.rid}">删帖</a></em>
+                                            <%--<input type="hidden" name="idpost" value="${post.idpost}" />--%>
+                                            <%--<input type="hidden" name="idplate" value="${plate.idplate}" />--%>
+                                            <%--<input class="post-report"  type="submit" value="删帖" >--%>
+                                        </c:if>
                                     </div>
                                 </td>
                             </tr>

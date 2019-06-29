@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.schoolParty.dao.IFriendDao">
+    <select id="myFocus"  parameterType="int" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM friend WHERE curid = #{uid}
+    </select>
+
+    <select id="follow"  parameterType="int" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM friend WHERE follow = #{uid}
+    </select>
+
+    <select id="myFocusList" resultType="java.lang.Integer">
+        select follow from friend WHERE curid= #{uid};
+
+    </select>
+    <insert id="addfocus" >
+        insert into friend(curid,follow)
+        value (#{uid},#{otheruid})
+
+    </insert>
+    <select id="showfocus" resultType="java.lang.Integer">
+        select follow
+        from friend
+        where curid=#{uid}
+    </select>
+    <select id="showfollow" resultType="java.lang.Integer">
+        select curid
+        from friend
+        where follow=#{uid}
+    </select>
+    <delete id="deletefocus" >
+        delete from friend WHERE curid= #{uid} and follow =#{otheruid};
+
+    </delete>
+</mapper>

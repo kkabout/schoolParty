@@ -25,9 +25,16 @@ public interface IUserService {
 
     public User getUserByUid(String nickname,String passwd);
 
+    public User getUser(String nickname,String passwd);
+
     public User getUserByNickname(String nickname);
 
     boolean changeInfo(User user);
 
    int changePassword(String nickname,String oldWord,String password,String confirmWord,HttpServletRequest request);
+
+   //    User getUserBySchoolId(String schoolid);
+   int insertInfo(String truename,String institute,String schoolid,String nickname,HttpServletRequest request);
+
+   public int usercount();
 }
