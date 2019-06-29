@@ -26,6 +26,10 @@ top int(1)
     private int top;//帖子是否为置顶贴,在数据库中对应的表字段 top int(1)
     private String type;//帖子类型
     private int end;//是否已被接单
+    private String kdcode;
+    private String kdphone;
+    private String kdcompany;
+    private String kdname;
 
     public post() {
     }
@@ -129,5 +133,37 @@ top int(1)
 
     public void setEnd(int end) {
         this.end = end;
+    }
+
+    public String getKdcode() {
+        return kdcode;
+    }
+
+    public void setKdcode(String kdcode) {
+        this.kdcode = kdcode;
+    }
+
+    public String getKdphone() {
+        return kdphone;
+    }
+
+    public void setKdphone(String kdphone) {
+        this.kdphone = kdphone;
+    }
+
+    public String getKdcompany() {
+        return kdcompany;
+    }
+
+    public void setKdcompany(String kdcompany) {
+        this.kdcompany = kdcompany;
+    }
+
+    public String getKdname() {
+        return kdname;
+    }
+
+    public void setKdname(String kdname) {
+        this.kdname = kdname;
     }
 }

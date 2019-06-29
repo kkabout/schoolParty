@@ -10,12 +10,15 @@ public interface IPostDao {
 
     void insertPost(post Post);
 
-
-
+    void deletePost(String idpost);
 
     int selectCount(String idplate);
+
+    public int postcount();
 
     List<post> selectAllPost(String idplate, int startIndex, int pagesize);
 
     post selectOnePost(String idpost);
+
+    void changeEnd(String idpost);
 }

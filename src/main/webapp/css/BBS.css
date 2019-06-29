@@ -43,7 +43,7 @@ body{
 	text-decoration: none;
 }
 .post-report{
-	width: 100px;
+	width: 80px;
 	padding: 5px 5px;
 	float: left;
 }
@@ -190,11 +190,14 @@ body{
 .at a:hover,.lastrp a:hover{
 	color: #FF6666;
 }
+.deletepost{
+    float: right;
+}
 .checknum{
 	float: right;
 	padding: 10px 25px;
 	font-size: 15px;
-	width: 190px;
+	width: 100px;
 }
 #rech{
 	padding-left: 8px;

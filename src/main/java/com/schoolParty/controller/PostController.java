@@ -59,6 +59,13 @@ public class PostController {
 
 
     }
+    @RequestMapping(value = "deletepost",method = {RequestMethod.POST,RequestMethod.GET})
+    public String deletePost(String idplate,String idpost)
+    {
+        this.postService.deletePost(idpost);
+        return "redirect:/post/selectAllPost.go?idplate="+idplate+"&pageNum=1";
+
+    }
 
 
 

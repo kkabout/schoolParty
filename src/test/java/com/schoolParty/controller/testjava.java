@@ -15,7 +15,8 @@ public class testjava {
         Date date = new Date();
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String a = f.format(date);
-        System.out.println(a);
+        System.out.println(System.getProperty("user.dir"));
+
     }
 
 }

@@ -1,17 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Murrary
-  Date: 2018/8/6
-  Time: 11:18
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String basePath=request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
-    request.setAttribute("basePath",basePath);
-%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <script type="text/javascript" src="/js/jquery-3.3.1.min.js"></script>
@@ -22,7 +11,7 @@
             form.action="${basePath}/user/changeInfo";
             form.method="post";
             form.submit();
-//            location.reload();
+            location.reload();
         }
 
         //表单验证
@@ -52,6 +41,28 @@
             return true;
         }
 
+        function realnamesubmit(){
+            var truename=document.getElementById("truename");
+            var institute=document.getElementById("institute");
+            var schoolid=document.getElementById("schoolid");
+            var nickname=document.getElementById("nickname");
+            if(truename.value==""){
+                alert("请输入真实姓名");
+                truename.focus();
+                return false;
+            }
+            if(institute.value==""){
+                alert("请输入院系");
+                institute.focus();
+                return false;
+            }
+            if(schoolid.value==""){
+                alert("请输入学号");
+                schoolid.focus();
+                return false;
+            }
+            return true;
+        }
         <%--function changePasswd(){--%>
             <%--var form=document.forms[0];--%>
             <%--form.action="${basePath}/user/changePasswd";--%>
@@ -169,6 +180,16 @@
             });
         });
 
+        // 选择图片显示
+        function imgChange(obj) {
+//获取点击的文本框
+//            var choosefile =document.getElementById("choosefile");
+            var file=document.getElementById("choosefile");
+            var imgUrl =window.URL.createObjectURL(file.files[0]);
+            var img =document.getElementById('img');
+            img.setAttribute('src',imgUrl); // 修改img标签src属性值
+        };
+
     </script>
     <title></title>
 </head>
@@ -227,6 +248,7 @@
     }
     a{
         text-decoration:none;
+        color: #0f0f0f;
     }
 
 
@@ -418,12 +440,12 @@
                         </i>
                         <span >我的信息</span>
                     </li>
-                    <li id="l_myRecord">
-                        <i >
-                            <!--图标-->
-                        </i>
-                        <span >我的记录</span>
-                    </li>
+                    <%--<li id="l_myRecord">--%>
+                        <%--<i >--%>
+                            <%--<!--图标-->--%>
+                        <%--</i>--%>
+                        <%--<span >我的记录</span>--%>
+                    <%--</li>--%>
                     <li id="l_changePassword">
                         <i>
                             <!--图标-->
@@ -437,12 +459,12 @@
                         </i>
                         <span >实名认证</span>
                     </li>
-                    <li id="">
-                        <i>
-                            <!--图标-->
-                        </i>
-                        <span >黑名单管理</span>
-                    </li>
+                    <%--<li id="">--%>
+                        <%--<i>--%>
+                            <%--<!--图标-->--%>
+                        <%--</i>--%>
+                        <%--<span >黑名单管理</span>--%>
+                    <%--</li>--%>
                 </ul>
             </div>
         </div>
@@ -455,71 +477,71 @@
 
                             <div class="right_line">
                                 <span class="r_span_m">昵称：</span>
-                                <span>${user.nickname}</span>
+                                <span>${curuser.nickname}</span>
 
                             </div>
-                            <div class="right_line">
-                                <span class="r_span_m">用户权限：</span>
-                                <span>${user.isadmin}</span>
+                            <%--<div class="right_line">--%>
+                                <%--<span class="r_span_m">用户权限：</span>--%>
+                                <%--<c:when test="${curuser.isadmin==0}">--%>
+                                    <%--<span>普通用户</span>--%>
+                                <%--</c:when>--%>
+                                <%--<c:otherwise>--%>
+                                    <%--<span>管理员</span>--%>
+                                <%--</c:otherwise>--%>
 
-                            </div>
+
+                            <%--</div>--%>
                             <div class="right_line">
                                 <span class="r_span_m">性别：</span>
                                 <div>
-                                            <span >${user.sex}
+                                    <span >${curuser.sex}
                                             </span>
                                 </div>
                             </div>
                             <div class="right_line">
                                 <span class="r_span_m">邮箱：</span>
-                                <span>${user.email}</span>
+                                <span>${curuser.email}</span>
 
                             </div>
                             <div class="right_line">
                                 <span class="r_span_m">手机号：</span>
-                                <span>${user.phone}</span>
+                                <span>${curuser.phone}</span>
 
                             </div>
                             <div class="right_line">
                                 <span class="r_span_m">学院：</span>
-                                <span>${user.institute}</span>
+                                <span>${curuser.institute}</span>
 
                             </div>
                             <div class="right_line">
                                 <span class="r_span_m">学号：</span>
-                                <span >${user.schoolid}</span>
+                                <span >${curuser.schoolid}</span>
                             </div>
-                            <div class="right_line">
-                                <span class="r_span_m">悬赏完成：</span>
-                                <span>0</span>
-                                <lable>次</lable>
+                            <%--<div class="right_line">--%>
+                                <%--<span class="r_span_m">悬赏完成：</span>--%>
+                                <%--<span>0</span>--%>
+                                <%--<lable>次</lable>--%>
 
-                                <span >累计赏金：</span>
-                                <span>0</span><lable>元</lable>
-                            </div>
-                            <div class="right_line">
-                                <span class="r_span_m">发帖数：</span>
-                                <span>0</span><lable>次</lable>
-                                <span>评论数：</span>
-                                <span>0</span><lable>次</lable>
-
-
-
-
-                            </div>
+                                <%--<span >累计赏金：</span>--%>
+                                <%--<span>0</span><lable>元</lable>--%>
+                            <%--</div>--%>
+                            <%--<div class="right_line">--%>
+                                <%--<span class="r_span_m">发帖数：</span>--%>
+                                <%--<span>0</span><lable>次</lable>--%>
+                                <%--<span>评论数：</span>--%>
+                                <%--<span>0</span><lable>次</lable>--%>
+                            <%--</div>--%>
                         </div>
                         <div class="right_user_r">
-                            <img src="img/user.JPG" class="user_photo" alt="user"/>
+                            <img src="${curuser.img}" class="user_photo" alt="user"/>
                             <div>
-                                <span >关注：</span><span >？</span>
-                                <span >粉丝：</span><span >？</span>
+                                <span>关注：</span><a href="/friend/showfocus?curid=${user.uid}">${focus}</a>
+                                <span>粉丝：</span><a href="/friend/showfollow?curid=${user.uid}">${followers}</a>
                             </div>
                             <div class="right_line">
-                                <span class="r_span_m">我的签名：</span>
+                                <span class="r_span_m">我的签名：${curuser.signature}</span>
                             </div>
-                            <div>
-                                <span >面向搜索引擎编程</span>
-                            </div>
+
                         </div>
 
 
@@ -528,11 +550,11 @@
                 </div>
                 <div id="r_myInfo" style="display:none">
                     <div class="right_user clearfix">
-                        <form name="userForm">
+                        <form name="userForm" enctype="multipart/form-data">
                             <div class="right_user_l">
                                 <div class="right_line">
                                     <span class="r_span_m">用户名：</span>
-                                    <div><span >吃饭大魔王</span></div>
+
                                 </div>
                                 <div class="right_line">
                                     <%--<span class="r_span_m">昵称：</span>--%>
@@ -542,19 +564,22 @@
                                 </div>
                                 <div class="right_line">
                                     <span class="r_span_m">真实姓名：</span>
-                                    <span></span>
-                                    <span>*还未完成实名认证哦</span>
-
+                                    <c:if test="${empty user.truename}">
+                                        <span>*还未完成实名认证哦</span>
+                                    </c:if>
+                                    <c:if test="${!empty user.truename}">
+                                        <span>${user.truename}</span>
+                                    </c:if>
                                 </div>
                                 <div class="right_line">
                                     <span class="r_span_m">性别：</span>
                                     <div>
                                             <span >
-                                                <input type="radio" name="sex" value="${user.sex}"/><lable>男</lable>
+                                                 <input type="radio" name="sex" value="男"/><lable>男</lable>
 
-                                                <input type="radio" name="sex" value="${user.sex}"/><lable>女</lable>
+                                                  <input type="radio" name="sex" value="女"/><lable>女</lable>
 
-                                                <input type="radio" name="sex" checked="0"/><lable>保密</lable>
+                                                 <input type="radio" name="sex" value="保密"/><lable>保密</lable>
                                             </span>
                                     </div>
                                 </div>
@@ -585,8 +610,9 @@
                                 </div>
                             </div>
                             <div class="right_user_r">
-                                <img src="img/user.JPG" class="user_photo" alt="user"/>
-                                <input type="text" class="input_inner " style="width: 120px"/><input type="button" value="选择图片"/>
+                                <img id="img" name="img"src="${basePath}${user.img}" class="user_photo" alt="user"/>
+                                <input type="file" name="file"  id="file" value="${basePath}${user.img}" onchange="imgChange(this);">
+
                             </div>
                             <div class="right_line" style="text-align: center;width: 789px">
                                 <div class="border_string"></div>
@@ -634,24 +660,29 @@
 
                 <div id="r_changePassword"  style="display:none">
                     <form  action="${basePath}/user/changePasswd" method="post" onsubmit="return changesubmit()">
-                        <div class="right_line">
-                            <%--<span class="r_span_m">昵称：</span>--%>
-                            <input type="text" id="nickname" name="nickname" placeholder="你的邮箱" class="input_inner" value="${user.nickname}" />
-                            <%--<div><span >${user.nickname} </span></div>--%>
+                        <%--<div class="right_line">--%>
+                            <%--&lt;%&ndash;<span class="r_span_m">昵称：</span>&ndash;%&gt;--%>
+                            <%--<input type="text" id="nickname" name="nickname" placeholder="你的邮箱" class="input_inner" value="${user.nickname}" />--%>
+                            <%--&lt;%&ndash;<div><span >${user.nickname} </span></div>&ndash;%&gt;--%>
 
-                        </div>
+                            <%--<div class="right_line">--%>
+                            <div class="center_line">
+                                <input type="hidden"  name="nickname" value="${user.nickname}"/>
+                            </div>
+
+
 
                         <div class="center_line">
                             <span>旧的密码：</span>
-                            <input type="password" name="oldWord" class="input_inner" />
+                            <input type="password" name="oldWord" id="oldWord" class="input_inner" />
                         </div>
                         <div class="center_line">
                             <span>新的密码：</span>
-                            <input type="password" name="password" class="input_inner"/>
+                            <input type="password" name="password" id="password" class="input_inner"/>
                         </div>
                         <div class="center_line">
                             <span>确认密码：</span>
-                            <input type="password" name= "confirmWord"class="input_inner"/>
+                            <input type="password" name= "confirmWord"  id="confirmWord" class="input_inner"/>
                         </div>
                         <div class="center_line">
                             <input type="submit" value="确认修改" class="submit_btn" />
@@ -660,48 +691,54 @@
                 </div>
 
                 <div id="r_isRealName"  style="display:none">
+                    <c:if test="${empty user.schoolid}">
                     <div class="right_user" >
                         <span>tips:</span>
                         <h4>填写信息</h4>
-                        <form>
+
+                        <form action="${basePath}/user/realname" method="post" onsubmit="return realnamesubmit()">
+
+                        <div style="margin-bottom: 20px">
+                        <input type="hidden"  name="nickname" value="${user.nickname}"/>
+                        </div>
 
                             <div style="margin-bottom: 20px">
                                 <span>真实姓名：</span>
-                                <input type="text" class="input_inner"/>
+                                <input type="text"  id="truename"  class="input_inner"/>
                             </div>
                             <div style="margin-bottom: 20px">
-                                <span>证件类型：</span>
-                                <input type="text" class="input_inner"/>
+                                 <span>所在院系：</span>
+                                 <input type="text" name="institute" id="institute" class="input_inner"/>
                             </div>
                             <div style="margin-bottom: 20px">
-                                <span>证件号码：</span>
-                                <input type="text" class="input_inner"/>
+                              <span>学号：</span>
+                                <input type="text" name="schoolid" id="schoolid" class="input_inner"/>
                             </div>
-                            <div class="clearfix">
-                                <div class="realName_photo_div">
-                                    <img src="img/user.JPG" class="realName_photo" alt="user"/>
-                                    <span>上传手持证件照</span>
-                                    <input type="button" value="点击上传"/>
-                                </div>
-                                <div class="realName_photo_div">
-                                    <img src="img/user.JPG" class="realName_photo" alt="user"/>
-                                    <span>上传证件照正面</span>
-                                    <input type="button" value="点击上传"/>
-                                </div>
-                                <div class="realName_photo_div">
-                                    <img src="img/user.JPG" class="realName_photo" alt="user"/>
-                                    <span>上传证件照反面</span>
-                                    <input type="button" value="点击上传"/>
-                                </div>
-                            </div>
-                            <h4>验证手机</h4>
-                            <div>
-                                <span>手机号：</span><span>152****2041</span>
-                                <div>
-                                    <input type="text" placeholder="验证码" class="input_inner"/>
-                                    <input type="button" value="获取验证码" />
-                                </div>
-                            </div>
+                            <%--<div class="clearfix">--%>
+                                <%--<div class="realName_photo_div">--%>
+                                    <%--<img src="img/user.JPG" class="realName_photo" alt="user"/>--%>
+                                    <%--<span>上传手持证件照</span>--%>
+                                    <%--<input type="button" value="点击上传"/>--%>
+                                <%--</div>--%>
+                                <%--<div class="realName_photo_div">--%>
+                                    <%--<img src="img/user.JPG" class="realName_photo" alt="user"/>--%>
+                                    <%--<span>上传证件照正面</span>--%>
+                                    <%--<input type="button" value="点击上传"/>--%>
+                                <%--</div>--%>
+                                <%--<div class="realName_photo_div">--%>
+                                    <%--<img src="img/user.JPG" class="realName_photo" alt="user"/>--%>
+                                    <%--<span>上传证件照反面</span>--%>
+                                    <%--<input type="button" value="点击上传"/>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                            <%--<h4>验证手机</h4>--%>
+                            <%--<div>--%>
+                                <%--<span>手机号：</span><span>${curuser.phone}</span>--%>
+                                <%--<div>--%>
+                                    <%--<input type="text" placeholder="验证码" class="input_inner"/>--%>
+                                    <%--<input type="button" value="获取验证码" />--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
                             <div class="center_line" style="margin-top:30px;border-top: 1px solid #e5e9ef;padding-top: 30px">
                                 <input type="button" value="提交认证" class="save_button"/>
                             </div>
@@ -711,6 +748,13 @@
 
 
 
+
+                     </c:if>
+                    <c:if test="$${!empty user.truename}">
+                        <div class="center_line">
+                            <h4>您已通过实名认证！</h4>
+                        </div>
+                    </c:if>
                 </div>
             </div>
 

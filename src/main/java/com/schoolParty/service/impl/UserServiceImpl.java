@@ -100,9 +100,6 @@ public class UserServiceImpl implements IUserService {
                 remembermeCookie.setMaxAge(0);
                 response.addCookie(remembermeCookie);
             }
-            int uid = userDao.getUserByNickname(nickname).getUid();
-            List<User> ulists = userDao.findFriendByid(uid);
-            request.getSession().setAttribute("ulists",ulists);
             request.getSession().setAttribute("user",user);
             if(serverCode!=null && serverCode.equalsIgnoreCase(code)){
                 return 0;
@@ -122,14 +119,17 @@ public class UserServiceImpl implements IUserService {
     }
 
 
+    @Override
     public User getUserByNickname(String nickname){
         return userDao.getUserByNickname(nickname);
     }
+    @Override
     public boolean changeInfo(User user){
         return userDao.changeInfo(user);
     }
 
 
+    @Override
     public int changePassword(String nickname,String oldWord,String password,String confirmWord,HttpServletRequest request) {
         String Md5Passwd = DigestUtils.md5Hex(password);
 
@@ -148,6 +148,32 @@ public class UserServiceImpl implements IUserService {
                 return 3;
             }
         }
+    }
+    @Override
+    public User getUser(String nickname, String passwd) {
+        return null;
+    }
+
+    @Override
+    public int insertInfo(String truename,String institute,String schoolid ,String nickname,HttpServletRequest request){
+        User user=userDao.getUserBySchoolId(schoolid);
+        if(user!=null){
+            return 1;
+        }else{
+            boolean result=userDao.insertInfo(truename, institute, schoolid,nickname);
+            if(result){
+                user=userDao.getUserByNickname(nickname);
+                request.getSession().setAttribute("user",user);
+                return 2;
+            }else {
+                return 0;
+            }
+        }
+    }
+
+    @Override
+    public int usercount() {
+        return userDao.usercount();
     }
 
 }

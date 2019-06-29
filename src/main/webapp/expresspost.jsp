@@ -120,7 +120,7 @@
                                         </div>
                                         <div class="aul">
                                             <div class="avatar">
-                                                <a href="#"><img src="${post.img}"></a>
+                                                <a href="#"><img  class="img-responsive center-block" src="${post.img}"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -132,12 +132,19 @@
                                             <div class="plhtime">
                                                 <em>发表于${post.publishTime}</em>
                                                 <span class="spacer">|</span>
-                                                <a href="#">只看该作者</a>
+                                                <%--<a href="#">只看该作者</a>--%>
                                             </div>
                                         </div>
                                         <div class="plele">
-                                            <h1>${post.title}}</h1>
-                                            <p>${post.content}</p>
+                                            <h1>${post.title}</h1>
+                                            <p>${post.content}<br>
+                                                <c:if test="${hasrelation==true}">
+                                                取货码:${post.kdcode}<br>
+                                                快递收货人:${post.kdname}<br>
+                                                快递收货电话:${post.kdphone}<br>
+                                                快递公司:${post.kdcompany}</p>
+                                                </c:if>
+                                            </p>
                                         </div>
                                     </div>
                                 </td>
@@ -147,7 +154,9 @@
                                 <td class="plp">
                                     <div class="plbt hid">
                                         <em><i class="fa fa-comment-o"></i>&nbsp<a href="#">回复</a></em>
-                                        <em><i class="fa fa-sign-language"></i>&nbsp<a href="#">接受该请求</a></em>
+                                        <c:if test="${hasrelation==false}">
+                                            <em><i class="fa fa-sign-language"></i>&nbsp<a href="/expressUser/insert?uid=${user.uid}&idpost=${post.idpost}">接受该请求</a></em>
+                                        </c:if>
                                     </div>
                                 </td>
                             </tr>
@@ -172,7 +181,7 @@
                                         </div>
                                         <div class="aul">
                                             <div class="avatar">
-                                                <a href="#"><img src="${reply1.img}"></a>
+                                                <a href="#"><img class="img-responsive center-block" src="${reply1.img}"></a>
                                             </div>
                                         </div>
                                     </div>
@@ -197,8 +206,11 @@
                                 <td class="plsl"></td>
                                 <td class="plp">
                                     <div class="plbt hid">
-                                        <em><i class="fa fa-comment-o"></i>&nbsp<a href="#">回复</a></em>
+                                        <c:if test="${user.isadmin gt 0}">
+                                            <em><i class="fa fa-comment-o"></i>&nbsp<a href="/reply/deleteReply?replyforid=${post.idpost}&idplate=${plate.idplate}&rid=${reply1.rid}">删帖</a></em>
+                                        </c:if>
                                     </div>
+
                                 </td>
                             </tr>
                             <tr class="sp">
@@ -209,6 +221,49 @@
                         </table>
                     </div>
                 </c:forEach>
+                <c:if test="${!empty user}">
+                <div class="fastpost">
+
+                    <div class="parea">
+                        <form action="/reply/insertReply" method="post">
+                            <input type="hidden" name="ruserid" value="${user.uid}" />
+                            <input type="hidden" name="replyforid" value="${post.idpost}" />
+                            <input type="hidden" name="idplate" value="${plate.idplate}"/>
+                            <div class="fph">
+                                请输入回帖内容
+                                <span></span>
+                            </div>
+                            <div class="fpm">
+                                <div class="fpm-type">
+								<span class="admode">
+									<a href="#">高级模式</a>
+								</span>
+                                </div>
+                                <div class="fpm-tarea">
+                                    <textarea name="content" id="content"></textarea>
+                                </div>
+                                <!-- <script type="text/javascript" src="js/ckeditor5-build-classic/ckeditor.js"></script>
+                                <script>
+                                    var myEditor = null;
+                                    window.onload = function(){
+                                         ClassicEditor
+                                        .create(document.querySelector("#editor"))
+                                        .then(editor => {
+                                            myEditor = editor;
+                                        })
+                                        .catch(error => {
+                                            console.error(error);
+                                        });
+                                    }
+                                </script> -->
+                            </div>
+                            <div class="line">
+                                <input class="submit_btn" type="submit" value="回帖" >
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </c:if>
 
 
                 <jsp:include page="footer.jsp"></jsp:include>

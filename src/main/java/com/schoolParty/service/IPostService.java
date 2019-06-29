@@ -13,6 +13,8 @@ public interface IPostService {
     public void insertPost(post Post);
     public void deletePost(String idpost);
     public post selectOnePost(String idpost);
+    public int countPost();
+    public void changeEnd(String idpost);
 
     pageBean<postshow> selectAllPost(String idplate, int pageNum);
 }

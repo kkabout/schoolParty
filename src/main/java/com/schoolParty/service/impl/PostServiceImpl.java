@@ -32,7 +32,7 @@ public class PostServiceImpl implements IPostService {
 
     @Override
     public void deletePost(String idpost) {
-
+        this.postDao.deletePost(idpost);
     }
 
     @Override
@@ -41,12 +41,22 @@ public class PostServiceImpl implements IPostService {
         return Post;
     }
 
+    @Override
+    public int countPost() {
+        return postDao.postcount();
+    }
+
+    @Override
+    public void changeEnd(String idpost) {
+        postDao.changeEnd(idpost);
+    }
+
 
     @Override
     public pageBean<postshow> selectAllPost(String idplate, int pageNum) {
 
         int totalRecord = this.postDao.selectCount(idplate);
-        pageBean pb = new pageBean(pageNum,10,totalRecord);
+        pageBean pb = new pageBean(pageNum,20,totalRecord);
         List<post> posts = this.postDao.selectAllPost(idplate,pb.getStartIndex(),pb.getPagesize());
         List<postshow> postshows = new ArrayList<postshow>();
         for (post Post:posts

@@ -5,13 +5,12 @@
 .drag{
     position:fixed;
     padding:0;
-    width: 560px;
-    height: 400px;
+    width: 1450px;
+    height: 760px;
     right: 0;
     bottom: 0;
     z-index: 950;
     overflow: hidden;
-    display: none;
     background-color: white;
 }
 
@@ -23,7 +22,7 @@
 .dialog_list {
     width: 156px;
     border-right: 1px #d9d9d9 solid;
-    height: 400px;
+    height: 700px;
     display: inline-block;
     float: left;
 
@@ -32,16 +31,16 @@
     overflow-y :auto;}
 
 .ul_drag li img{
-    width: 22px;
-    height: 22px;
+    width: 60px;
+    height: 60px;
     margin:0  10px 0;
 }
 .dialog_list div,
 .dialog_top,
 .ul_drag li a
 {
-    height: 48px;
-    line-height: 48px;
+    height: 60px;
+    line-height: 60px;
     border-bottom: 1px solid #d9d9d9;
 }
 .ul_drag li a{
@@ -52,8 +51,8 @@
     background-color:  #e1e2e5 ;
 }
 .dialog_box{
-    width: 400px;
-    height: 400px;
+    width: 1250px;
+    height: 1000px;
     float: left;
     overflow: hidden;
     display: inline;
@@ -70,7 +69,7 @@
 
 .dialog_show{
     overflow-y :auto;
-    height: 300px;
+    height: 600px;
     background-color: #d9d9d9;
 
 }

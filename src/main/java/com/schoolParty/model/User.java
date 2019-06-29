@@ -1,5 +1,7 @@
 package com.schoolParty.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class User {
 
     private int uid; // 用户的id(登陆名),对应数据库表中字段 uid  INT PK
@@ -14,6 +16,9 @@ public class User {
     private String truename;//用户的真实姓名,对应数据库表中字段 truename varchar(45)
     private String img;//用户头像,对应数据库表中字段 img varchar(200)
     private int success;//用户成功拿取快递次数,succees  int
+    private MultipartFile file; //文件
+    private String signature;
+    private int local;
 
 
     public User() {
@@ -26,6 +31,14 @@ public class User {
         this.isadmin = isadmin;
         this.email = email;
         this.sex = sex;
+    }
+
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
     }
 
     public int getUid() {
@@ -123,4 +136,22 @@ public class User {
     public void setSuccess(int success) {
         this.success = success;
     }
+
+    public int getLocal() {
+        return local;
+    }
+
+    public void setLocal(int local) {
+        this.local = local;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
+
 }

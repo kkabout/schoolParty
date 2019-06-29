@@ -13,4 +13,11 @@
         rpublishTime,replyforid,ruserid,content)
         VALUE (#{rpublishTime},#{replyforid},#{ruserId},#{content});
     </select>
+    <select id="deleteReply" >
+        delete from reply
+        where rid =#{rid};
+    </select>
+    <select id="replycount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM reply;
+    </select>
 </mapper>

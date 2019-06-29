@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface IReplyService {
     public pageBean<replyshow> selectAllReply(String idpost, int pageNum);
-
-
+    public int countreply();
+    public void  deleteReply(int rid);
     void insertReply(String ruserid, String replyforid, String content, String format);
 }

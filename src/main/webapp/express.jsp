@@ -24,12 +24,13 @@
 					<a href="#" title="代拿快递">代拿快递</a>
 				</div>
 				<div class="epr-post">
-					<div class="post-report">
-						<a href="#">找人代拿</a>
-					</div>
+                    <c:if test="${!empty user}">
+                        <div class="post-report">
+                            <a href="/kuaidi.jsp">找人代拿</a>
+                        </div>
+                    </c:if>
 					<span class="page">
 						<div class="post-paging">
-
                             <c:forEach var="index" begin="1" end="${posts.totalpage}" step="1">
                                 <c:if test="${posts.pageNum==index}">
                                     <strong>${index}</strong>
@@ -128,7 +129,17 @@
                                                     <%--/--%>
                                                     <span>     ${post.totalRecord}</span>
                                                 </div>
+                                                <form action="/post/deletepost" method="post">
+                                                    <div class="deletepost1">
+                                                        <c:if test="${user.isadmin gt 0}">
+                                                            <input type="hidden" name="idpost" value="${post.idpost}" />
+                                                            <input type="hidden" name="idplate" value="${plate.idplate}" />
+                                                            <input class="deletebtn"  type="submit" value="删帖" >
+                                                        </c:if>
+                                                    </div>
+                                                </form>
                                             </div>
+
                                         </th>
                                     </tr>
                                     </tbody>

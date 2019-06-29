@@ -1,0 +1,11 @@
+.ideal/
+.idea/
+null/
+52923a51c272e4b702f2bbdee2895687/
+target/
+*.iml
+*/glassfish-web.xml
+.idea/
+**/glassfish-web.xml
+/.idea/
+.DS_Store

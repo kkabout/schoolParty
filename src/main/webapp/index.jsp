@@ -71,6 +71,32 @@
             imgcode.src="${basePath}/user/randrom?s="+date.getTime();
         }
 
+        $(document).ready(function(){
+            //记住密码功能
+            var str = getCookie("remembermeCookie");
+//            自动填充用户名
+            $("#nickname").val(str);
+        });
+        //获取cookie
+        function getCookie(cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for(var i=0; i<ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0)==' ') c = c.substring(1);
+                if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
+            }
+            return "";
+        }
+        //记住密码功能
+        function remember(){
+            var remFlag = $("input[type='checkbox']").is(':checked');
+            if(remFlag==true){ //如果选中设置remFlag为1
+                $("#remFlag").val("1");
+            }else{
+                $("#remFlag").val("");
+            }
+        }
 
     </script>
 </head>
@@ -145,6 +171,11 @@
         -moz-border-radius : 5px;
     }
 
+    .welcome1{
+        font-size: 20px;
+        color: red;
+        list-style: none;
+    }
 </style>
 <body>
 <div class="zhuye">
@@ -196,7 +227,8 @@
                                                         <p id="p_verifycodeTip"></p>
                                                     </div>
                                                     <div class=" line margin_bottom_40">
-                                                        <input type="checkbox" name="rememberme" value="1" ${not empty cookie.remembermeCookie? "checked='checked'" : ""}>记住用户名
+                                                        <input type="checkbox" name="remFlag" id="remFlag" value="1"  onclick="remember()">记住用户名
+                                                        <%--<input type="checkbox" name="rememberme" value="1" ${not empty cookie.remembermeCookie? "checked='checked'" : ""}>记住用户名--%>
                                                         <%--<input type="checkbox" name="autoLogin" value="1" ${not empty cookie.autoLoginCookie? "checked='checked'" : ""}>自动登录--%>
                                                         <%--<input name="remember" type="checkbox" value="1" ${not empty cookie.rememberCookie? "checked='checked'" : ""}>--%>
                                                         <%--记住密码--%>
@@ -224,8 +256,8 @@
                         <li><a href="/register.jsp" target="_blank "><i class="fa fa-child "></i>&nbsp注册</a></li>
                 </c:if>
                  <c:if test="${!empty user}">
-                        <li><a href="/user/personInfo">欢迎您，${user.nickname}</a></li>
-                        <li><a href="${basePath}/user/logout"><i class="fa fa-child"></i>|退出</a></li>
+                     <span><a href="/user/personInfo?uid=${user.uid}" class="welcome1" style="margin-left: -110px">欢迎您，${user.nickname}</a></span>
+                     <span><a href="${basePath}/user/logout" class="welcome1" style="margin-left: 20px;border: 1px solid #dfdfdf;">|退出</a></span>
                  </c:if>
                     </ul>
                 </div>
@@ -240,9 +272,9 @@
         </ul>
         <hr />
         <div class="count1 ">
-            <img src="${basePath}/image/m4.png " />&nbsp;&nbsp;总贴：1070404|主题：10856|今日：4567|昨日：8487|会员：98996|欢迎新会员：
-            <a href="# ">galigalili</a>
-            <span style="float: right; "><a href="# ">最新回复</a></span>
+            <img src="${basePath}/image/m4.png " />&nbsp;&nbsp;总贴：${count}|主题：${postcount}|会员：${usercount}
+            <%--<a href="# ">galigalili</a>--%>
+            <%--<span style="float: right; "><a href="# ">最新回复</a></span>--%>
         </div>
     </div>
 
@@ -253,7 +285,7 @@
             </div>
           <c:forEach items="${plate}" var="k">
             <div class="Content2 ">
-                <img class="item1 " width="200px" src="${basePath}/image/img_xysh.jpg " title="${k.pdescription} "/>
+                <img class="item1" width="200px" height="140px" src="${k.plogo}" title="${k.pdescription} "/>
 					<span style="float: left;margin:10px 100px; ">
 						<a href="${basePath}/post/selectAllPost.go?idplate=${k.idplate}&pageNum=1" title="${k.pdescription}"/>${k.pname}(${k.totalRecord})</a>
 					</span>
